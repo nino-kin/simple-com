@@ -6,6 +6,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
+    libcurl4-openssl-dev \
+    libfmt-dev
 
 WORKDIR /app
 
