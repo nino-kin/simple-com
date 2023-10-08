@@ -14,7 +14,7 @@
 #   Docker helper.
 #
 ###########################################################################
-set -e
+set -eu
 
 readonly REPO_NAME=$(basename $(git rev-parse --show-toplevel))
 readonly SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
@@ -31,7 +31,7 @@ readonly DOCKER_MOUNT_OPTION="--mount type=bind,source=$REPO_ROOT_DIR,target=$DO
 # Build Docker image
 setup() {
   if docker images "$IMAGE_NAME:$TAG" | grep "$IMAGE_NAME\s*$TAG"; then
-    read -r -p "An image with the same name already exists. Do you want to delete it and create a new image? (y/n): " answer
+    read -r -p "A Docker image with the same name already exists. Do you want to delete it and create a new image? (y/n): " answer
     if [ "$answer" == "y" ] || [ "$answer" == "Y" ]; then
       # Remove the image
       docker rmi "$IMAGE_NAME:$TAG"
