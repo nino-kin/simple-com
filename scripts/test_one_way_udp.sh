@@ -19,11 +19,11 @@ echo "=============================================="
 sleep 1
 
 echo -e "INFO: Run a server..."
-$REPO_ROOT_DIR/$BUILD_DIR/src/sample/udp_server &
+$REPO_ROOT_DIR/$BUILD_DIR/src/sample/one_way_udp/one_way_udp_server &
 
 echo -e "INFO: Waiting the data from client..."
 sleep 3
 
 echo -e "INFO: Send data from a client..."
-$REPO_ROOT_DIR/$BUILD_DIR/src/sample/udp_client
+$REPO_ROOT_DIR/$BUILD_DIR/src/sample/one_way_udp/one_way_udp_client
 echo -e "\nINFO: Test was completed successfully."
