@@ -14,31 +14,6 @@ include_directories(server)
 add_subdirectory(sample)
 
 # --------------------------------------------------------------
-# Packages
-# --------------------------------------------------------------
-# --------------------------------------------------
-# spdlog
-# --------------------------------------------------
-# cf. https://github.com/gabime/spdlog
-# cf. https://discourse.cmake.org/t/use-external-libraries-using-fetchcontent/2710
-include(FetchContent)
-
-FetchContent_Declare(
-    spdlog
-    GIT_REPOSITORY https://github.com/gabime/spdlog.git
-    GIT_TAG        v1.12.0
-)
-FetchContent_GetProperties(spdlog)
-if(NOT spdlog_POPULATED)
-    message("Cloning spdlod")
-    FetchContent_Populate(spdlog)
-    add_subdirectory(
-        ${spdlog_SOURCE_DIR}
-        ${spdlog_BINARY_DIR}
-    )
-endif()
-
-# --------------------------------------------------------------
 # Target name
 # --------------------------------------------------------------
 set(TARGET_NAME main)
