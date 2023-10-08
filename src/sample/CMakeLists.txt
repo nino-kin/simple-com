@@ -4,10 +4,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # --------------------------------------------------------------
-# Executables
+# Target directories
 # --------------------------------------------------------------
-add_executable(udp_client
-    udp_client.cpp)
-
-add_executable(udp_server
-    udp_server.cpp)
+add_subdirectory(one_way_udp)
+add_subdirectory(two_way_udp)
