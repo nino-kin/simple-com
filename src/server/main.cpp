@@ -38,7 +38,7 @@ int main() {
 
             // Create a new Socket for this client
             Socket client_socket_instance;
-            client_socket_instance.Connect(client_ip, port);
+            client_socket_instance.Connect(client_ip, port); //FIXME(nino-kin 2023/10/08): The process on this line is causing an error. ($./build/src/main 2> error.log)
 
             // Receive and log data from clients
             std::string received_data;
