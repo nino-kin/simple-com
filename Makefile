@@ -11,7 +11,8 @@ BUILD_DIR := build
 SCRIPT_DIR := scripts
 
 # Docker
-DOCKER_PORT := 8000 # Local web server port
+## Local web server port
+DOCKER_PORT := 8000
 
 # For more information on this technique, see
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
@@ -63,3 +64,12 @@ clean: ## Clean all artifacts
 	@sudo rm -rf $(BUILD_DIR)
 	@[ -z "$$(find . -maxdepth 1 -type d -name 'site')" ] || sudo chmod -R 777 site/ && rm -rf site/
 	@[ -z "$$(find . -maxdepth 1 -type d -name 'out')" ] || sudo chmod -R 777 out/ && rm -rf out/
+
+#---------------------------------------#
+# MkDocs                                #
+#---------------------------------------#
+mkdocs-build: ## Build documentation for MkDocs
+	@docker run --rm -it -v $(PWD):/docs squidfunk/mkdocs-material build
+
+mkdocs-serve: ## Serve documentation for MkDocs
+	docker run --rm -it -p $(DOCKER_PORT):8000 -v $(PWD):/docs squidfunk/mkdocs-material
