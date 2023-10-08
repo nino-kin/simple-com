@@ -6,11 +6,13 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
+#include "spdlog/spdlog.h"
+
 Socket::Socket() {
     // Initialize a socket
     socket_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (socket_fd == -1) {
-        std::cerr << "Failed to create socket." << std::endl;
+        spdlog::error("Failed to create socket.");
     }
 }
 
@@ -26,7 +28,7 @@ bool Socket::Connect(const std::string& host, const uint16_t port) {
 
     // Connect to server
     if (connect(socket_fd, (struct sockaddr*)&server_address, sizeof(server_address)) == -1) {
-        std::cerr << "Failed to connect to the server." << std::endl;
+        spdlog::error("Failed to connect to the server.");
         return false;
     }
     return true;
@@ -35,7 +37,7 @@ bool Socket::Connect(const std::string& host, const uint16_t port) {
 bool Socket::Send(const std::string& data) {
     ssize_t bytes_sent = send(socket_fd, data.c_str(), data.length(), 0);
     if (bytes_sent == -1) {
-        std::cerr << "Failed to send data." << std::endl;
+        spdlog::error("Failed to send data.");
         return false;
     }
     return true;
@@ -48,7 +50,7 @@ bool Socket::Receive(std::string& data) {
 
     ssize_t bytes_received = recv(socket_fd, buffer, buffer_size - 1, 0);
     if (bytes_received == -1) {
-        std::cerr << "Failed to receive data." << std::endl;
+        spdlog::error("Failed to receive data.");
         return false;
     }
 

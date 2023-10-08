@@ -6,6 +6,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+#include "spdlog/spdlog.h"
+
 SocketListener::SocketListener(const std::string& host, const uint16_t port)
     : host(host), port(port), listener_fd(-1), running(false), connection_callback(nullptr) {}
 
@@ -25,19 +27,19 @@ bool SocketListener::Start() {
 
     listener_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (listener_fd == -1) {
-        std::cerr << "Failed to create listener socket." << std::endl;
+        spdlog::error("Failed to create listener socket.");
         return false;
     }
 
     if (bind(listener_fd, (struct sockaddr*)&server_address, sizeof(server_address)) == -1) {
-        std::cerr << "Failed to bind listener socket." << std::endl;
+        spdlog::error("Failed to bind listener socket.");
         close(listener_fd);
         listener_fd = -1;
         return false;
     }
 
     if (listen(listener_fd, 5) == -1) {
-        std::cerr << "Failed to start listening." << std::endl;
+        spdlog::error("Failed to start listening.");
         close(listener_fd);
         listener_fd = -1;
         return false;
@@ -73,7 +75,7 @@ void SocketListener::Listen() {
         socklen_t client_address_len = sizeof(client_address);
         int client_fd = accept(listener_fd, (struct sockaddr*)&client_address, &client_address_len);
         if (client_fd == -1) {
-            std::cerr << "Failed to accept connection." << std::endl;
+            spdlog::error("Failed to accept connection.");
             continue;
         }
 

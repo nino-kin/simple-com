@@ -1,10 +1,13 @@
 #include "logger.hpp"
+
 #include <ctime>
+
+#include "spdlog/spdlog.h"
 
 Logger::Logger(const std::string& filename) {
     log_file.open(filename, std::ios::out | std::ios::app);
     if (!log_file.is_open()) {
-        std::cerr << "Failed to open log file: " << filename << std::endl;
+        spdlog::error("Failed to open log file: {}", filename);
     }
 }
 
@@ -16,7 +19,7 @@ Logger::~Logger() {
 
 void Logger::Log(LogLevel level, const std::string& message) {
     if (!log_file.is_open()) {
-        std::cerr << "Log file is not open." << std::endl;
+        spdlog::error("Log file is not open.");
         return;
     }
 

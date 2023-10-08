@@ -5,9 +5,12 @@
 #include "socket_utils.hpp"
 #include "packet.hpp"
 #include "network_config.hpp"
+
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <linux/in.h>
+
+#include "spdlog/spdlog.h"
 
 int main() {
 
@@ -30,7 +33,7 @@ int main() {
                 client_port = std::to_string(SocketUtils::GetPort(client_info));
             }
 
-            std::cout << "Client connected from " << client_ip << ":" << client_port << std::endl;
+            spdlog::info("Client connected from {0}:{1}", client_ip, client_port);
             logger.SendLog("Client connected from " + client_ip + ":" + client_port, LogLevel::INFO);
 
             // Create a new Socket for this client
@@ -41,18 +44,18 @@ int main() {
             std::string received_data;
             while (true) {
                 if (!client_socket_instance.Receive(received_data)) {
-                    std::cerr << "Error while receiving data from client." << std::endl;
+                    spdlog::error("Error while receiving data from client.");
                     throw SocketException("Error while receiving data from client.");
                 }
 
                 if (received_data.empty()) {
-                    std::cout << "Client disconnected." << std::endl;
+                    spdlog::info("Client disconnected.");
                     logger.SendLog("Client disconnected.", LogLevel::INFO);
                     break;
                 }
 
                 // Logging of received data
-                std::cout << "Received data from client: " << received_data << std::endl;
+                spdlog::info("Received data from client: {}", received_data);
                 logger.SendLog("Received data from client: " + received_data, LogLevel::INFO);
 
                 // Create packets and echo data back to source
@@ -63,9 +66,9 @@ int main() {
         });
 
         if (listener.Start()) {
-            std::cout << "Server listening on " << host << ":" << port << std::endl;
+            spdlog::info("Server listening on {0}:{1}", host, port);
         } else {
-            std::cerr << "Failed to start the server." << std::endl;
+            spdlog::error("Failed to start the server.");
             return 1;
         }
 
@@ -73,9 +76,9 @@ int main() {
             // Nothing to do here.
         }
     } catch (const SocketException& e) {
-        std::cerr << "SocketException: " << e.what() << std::endl;
+        spdlog::error("SocketException: {}", e.what());
     } catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
+        spdlog::error("Exception: {}", e.what());
     }
 
     return 0;
