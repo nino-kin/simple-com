@@ -1,5 +1,15 @@
 # Memo
 
+## Class diagram
+
+Need to make the whole of Class diagram.
+
+## Self study
+
+[【C++】UDP通信を実装する（Windows/Linux環境）](https://shizenkarasuzon.hatenablog.com/entry/2020/06/25/150229)
+
+## File structure
+
 ソケット通信と送受信時のログ機能を兼ね備えたC++ライブラリを作成するために、以下に示す主要な機能を含む10個以上のファイル（モジュール）に分割して実装できます。これには、クラス定義、API関数、ヘッダーファイル、および詳細な解説が含まれます。
 
 1. **Socket.h / Socket.cpp**:
