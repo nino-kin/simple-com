@@ -22,7 +22,8 @@ readonly REPO_ROOT_DIR=$(cd "$SCRIPT_DIR/.." && pwd)
 readonly DOCKER_WORK_DIR="/app"
 
 # Docker configuration
-readonly IMAGE_NAME="ninokin/$REPO_NAME"
+readonly USER_NAME='nino-kin'
+readonly IMAGE_NAME="$USER_NAME/$REPO_NAME"
 readonly TAG="latest"
 readonly DOCKER_TAG="$IMAGE_NAME:$TAG"
 readonly DOCKER_CONTAINER="$REPO_NAME"
