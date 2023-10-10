@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 #include "packet.hpp"
 
 Packet::Packet() : can_id_(0), can_dlc_(0) {}
@@ -34,10 +36,17 @@ std::vector<uint8_t> Packet::serialize() const {
     buffer.reserve(13); // Reserve space for can_id, can_dlc, and data
 
     // Serialize can_id (4 bytes)
-    buffer.push_back((can_id_ >> 24) & 0xFF);
-    buffer.push_back((can_id_ >> 16) & 0xFF);
-    buffer.push_back((can_id_ >> 8) & 0xFF);
-    buffer.push_back(can_id_ & 0xFF);
+    uint32_t can_id_value = (can_id_ >> 24) & 0xFF;
+    buffer.push_back(static_cast<uint8_t>(can_id_value));
+
+    can_id_value = (can_id_ >> 16) & 0xFF;
+    buffer.push_back(static_cast<uint8_t>(can_id_value));
+
+    can_id_value = (can_id_ >> 8) & 0xFF;
+    buffer.push_back(static_cast<uint8_t>(can_id_value));
+
+    can_id_value = can_id_ & 0xFF;
+    buffer.push_back(static_cast<uint8_t>(can_id_value));
 
     // Serialize can_dlc (1 byte)
     buffer.push_back(can_dlc_);

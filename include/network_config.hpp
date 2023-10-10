@@ -1,5 +1,5 @@
-#ifndef NETWORK_CONFIG_H_
-#define NETWORK_CONFIG_H_
+#ifndef NETWORK_CONFIG_HPP_
+#define NETWORK_CONFIG_HPP_
 
 #include <string>
 
@@ -8,4 +8,4 @@ namespace NetworkConfig {
     const int PORT = 5555;                     // Port number
 }
 
-#endif /* NETWORK_CONFIG_H_ */
+#endif /* NETWORK_CONFIG_HPP_ */
