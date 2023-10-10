@@ -1,18 +1,38 @@
-#include "socket_utils.hpp"
+#include <netdb.h>
 #include <arpa/inet.h>
 
-std::string SocketUtils::GetIPAddress(const sockaddr_in& sockaddr) {
-    char ip_buffer[INET_ADDRSTRLEN];
-    inet_ntop(AF_INET, &(sockaddr.sin_addr), ip_buffer, INET_ADDRSTRLEN);
-    return std::string(ip_buffer);
+#include "socket_utils.hpp"
+
+std::string SocketUtils::resolveHostname(const std::string& hostname) {
+    struct hostent* he;
+    struct in_addr** addr_list;
+
+    if ((he = gethostbyname(hostname.c_str())) == nullptr) {
+        herror("gethostbyname");
+        return "";
+    }
+
+    addr_list = reinterpret_cast<struct in_addr**>(he->h_addr_list);
+
+    for (int i = 0; addr_list[i] != nullptr; i++) {
+        return inet_ntoa(*addr_list[i]);
+    }
+
+    return "";
 }
 
-unsigned short SocketUtils::GetPort(const sockaddr_in& sockaddr) {
-    return ntohs(sockaddr.sin_port);
+unsigned short SocketUtils::convertPort(const std::string& port) {
+    return static_cast<unsigned short>(std::stoi(port));
 }
 
-in_addr SocketUtils::ConvertToIPAddress(const std::string& ip_address) {
-    in_addr result;
-    inet_pton(AF_INET, ip_address.c_str(), &(result.s_addr));
-    return result;
+unsigned short SocketUtils::convertPort(int port) {
+    return static_cast<unsigned short>(port);
+}
+
+unsigned long SocketUtils::convertIp(const std::string& ip) {
+    return inet_addr(ip.c_str());
+}
+
+std::string SocketUtils::convertIp(unsigned long ip) {
+    return inet_ntoa(*reinterpret_cast<struct in_addr*>(&ip));
 }

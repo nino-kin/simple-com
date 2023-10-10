@@ -1,25 +1,30 @@
-#ifndef PACKET_H_
-#define PACKET_H_
+#ifndef PACKET_HPP_
+#define PACKET_HPP_
 
-#include <string>
+#include <cstdint>
+#include <vector>
 
 class Packet {
 public:
     Packet();
-    Packet(const std::string& data);
+    Packet(uint32_t can_id, uint8_t can_dlc, const std::vector<uint8_t>& data);
 
-    void SetData(const std::string& data);
-    std::string GetData() const;
+    void setCanId(uint32_t can_id);
+    uint32_t getCanId() const;
 
-    void SetHeader(const std::string& header);
-    std::string GetHeader() const;
+    void setCanDlc(uint8_t can_dlc);
+    uint8_t getCanDlc() const;
 
-    std::string Serialize() const;
-    bool Deserialize(const std::string& serializedData);
+    void setData(const std::vector<uint8_t>& data);
+    std::vector<uint8_t> getData() const;
+
+    std::vector<uint8_t> serialize() const;
+    static Packet deserialize(const std::vector<uint8_t>& buffer);
 
 private:
-    std::string header;
-    std::string data;
+    uint32_t can_id_;
+    uint8_t can_dlc_;
+    std::vector<uint8_t> data_;
 };
 
-#endif /* PACKET_H_ */
+#endif /* PACKET_HPP_ */

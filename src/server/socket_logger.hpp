@@ -1,21 +1,21 @@
-#ifndef SOCKET_LOGGER_H_
-#define SOCKET_LOGGER_H_
+#ifndef SOCKET_LOGGER_HPP_
+#define SOCKET_LOGGER_HPP_
 
-#include "socket.hpp"
 #include "logger.hpp"
+#include "socket.hpp"
 
-class SocketLogger {
-public:
-    SocketLogger(const std::string& host, const uint16_t port, const std::string& logFilename);
-    ~SocketLogger();
+class SocketLogger : public Socket {
+    public:
+        SocketLogger(const std::string& host, const uint16_t port, const std::string& logFilename);
+        ~SocketLogger();
 
-    bool Connect(const std::string& host, const uint16_t port);
-    bool SendLog(const std::string& logMessage, LogLevel logLevel);
-    void Disconnect();
+        bool connect(const std::string& host, const uint16_t port);
+        bool sendLog(const std::string& logMessage, LogLevel logLevel);
+        void disconnect();
 
-private:
-    Socket socket;
-    Logger logger;
+    private:
+        Socket socket_;
+        Logger logger_;
 };
 
-#endif /* SOCKET_LOGGER_H_ */
+#endif /* SOCKET_LOGGER_HPP_ */

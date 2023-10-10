@@ -1,5 +1,3 @@
-
-#include "socket_options.hpp"
 #include <iostream>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
@@ -7,24 +5,29 @@
 
 #include "spdlog/spdlog.h"
 
-bool SocketOptions::SetTimeout(int socket_fd, int timeout_ms) {
-    struct timeval timeout;
-    timeout.tv_sec = timeout_ms / 1000;
-    timeout.tv_usec = (timeout_ms % 1000) * 1000;
+#include "socket_options.hpp"
 
-    if (setsockopt(socket_fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout)) == -1 ||
-        setsockopt(socket_fd, SOL_SOCKET, SO_SNDTIMEO, &timeout, sizeof(timeout)) == -1) {
-        spdlog::error("Failed to set socket timeout.");
-        return false;
+SocketOptions::SocketOptions()
+    : timeout_(0), bufferSize_(8192) {}
+
+void SocketOptions::setOption(Option option, int value) {
+    switch (option) {
+        case Option::Timeout:
+            timeout_ = value;
+            break;
+        case Option::BufferSize:
+            bufferSize_ = value;
+            break;
     }
-    return true;
 }
 
-bool SocketOptions::SetBufferSize(int socket_fd, int buffer_size) {
-    if (setsockopt(socket_fd, SOL_SOCKET, SO_RCVBUF, &buffer_size, sizeof(buffer_size)) == -1 ||
-        setsockopt(socket_fd, SOL_SOCKET, SO_SNDBUF, &buffer_size, sizeof(buffer_size)) == -1) {
-        spdlog::error("Failed to set socket buffer size.");
-        return false;
+int SocketOptions::getOption(Option option) {
+    switch (option) {
+        case Option::Timeout:
+            return timeout_;
+        case Option::BufferSize:
+            return bufferSize_;
     }
-    return true;
+
+    return -1; // Proper error handling is required in case of an error.
 }

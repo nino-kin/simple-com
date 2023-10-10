@@ -1,48 +1,38 @@
-#include "logger.hpp"
-
-#include <ctime>
+#include <fstream>
+#include <iostream>
 
 #include "spdlog/spdlog.h"
 
-Logger::Logger(const std::string& filename) {
-    log_file.open(filename, std::ios::out | std::ios::app);
-    if (!log_file.is_open()) {
-        spdlog::error("Failed to open log file: {}", filename);
-    }
-}
+#include "logger.hpp"
 
-Logger::~Logger() {
-    if (log_file.is_open()) {
-        log_file.close();
-    }
-}
+Logger::Logger(const std::string& filePath) : filePath_(filePath) {}
 
-void Logger::Log(LogLevel level, const std::string& message) {
-    if (!log_file.is_open()) {
-        spdlog::error("Log file is not open.");
+Logger::~Logger() {}
+
+void Logger::log(LogLevel level, const std::string& message) {
+    std::ofstream logFile(filePath_, std::ios::app);
+
+    if (!logFile.is_open()) {
+        spdlog::error("Error opening log file.");
         return;
     }
 
-    // Get the log timestamp
-    time_t now = time(0);
-    tm* timeinfo = localtime(&now);
-    char timestamp[20];
-    strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", timeinfo);
-
-    // Get log level string
-    std::string log_level_str;
+    std::string levelStr;
     switch (level) {
         case LogLevel::INFO:
-            log_level_str = "INFO";
+            levelStr = "[INFO]";
             break;
         case LogLevel::WARNING:
-            log_level_str = "WARNING";
+            levelStr = "[WARNING]";
             break;
         case LogLevel::ERROR:
-            log_level_str = "ERROR";
+            levelStr = "[ERROR]";
+            break;
+        default:
+            levelStr = "[UNKNOWN]";
             break;
     }
 
-    // Write log messages to file
-    log_file << "[" << timestamp << "] [" << log_level_str << "] " << message << std::endl;
+    logFile << levelStr << " " << message << "\n";
+    logFile.close();
 }

@@ -1,10 +1,21 @@
-#ifndef SOCKET_OPTIONS_H_
-#define SOCKET_OPTIONS_H_
+#ifndef SOCKET_OPTIONS_HPP_
+#define SOCKET_OPTIONS_HPP_
 
 class SocketOptions {
 public:
-    static bool SetTimeout(int socket_fd, int timeout_ms);
-    static bool SetBufferSize(int socket_fd, int buffer_size);
+    enum class Option {
+        Timeout,
+        BufferSize
+    };
+
+    SocketOptions();
+
+    void setOption(Option option, int value);
+    int getOption(Option option);
+
+private:
+    int timeout_;
+    int bufferSize_;
 };
 
-#endif /* SOCKET_OPTIONS_H_ */
+#endif /* SOCKET_OPTIONS_HPP_ */

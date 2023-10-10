@@ -1,88 +1,73 @@
-#include "socket_listener.hpp"
-#include <iostream>
-#include <cstring>
+#include "socket_exception.hpp"
+#include "socket_utils.hpp"
+
+#include <unistd.h>
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <unistd.h>
 
 #include "spdlog/spdlog.h"
 
-SocketListener::SocketListener(const std::string& host, const uint16_t port)
-    : host(host), port(port), listener_fd(-1), running(false), connection_callback(nullptr) {}
+#include "socket_listener.hpp"
+
+SocketListener::SocketListener(int port) : serverSocket_(-1), clientSocket_(-1) {
+    // Create a TCP socket
+    serverSocket_ = socket(AF_INET, SOCK_STREAM, 0);
+    if (serverSocket_ < 0) {
+        throw SocketException("Failed to create socket");
+    }
+
+    // Set socket options (optional)
+    int opt = 1;
+    if (setsockopt(serverSocket_, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)) < 0) {
+        throw SocketException("Failed to set socket options");
+    }
+
+    // Bind the socket
+    sockaddr_in serverAddress;
+    serverAddress.sin_family = AF_INET;
+    serverAddress.sin_addr.s_addr = INADDR_ANY;
+    serverAddress.sin_port = htons(port);
+
+    if (bind(serverSocket_, (struct sockaddr*)&serverAddress, sizeof(serverAddress)) < 0) {
+        throw SocketException("Failed to bind socket");
+    }
+
+    // Start listening
+    if (listen(serverSocket_, 1) < 0) {
+        throw SocketException("Failed to listen for connections");
+    }
+
+    // Accept the first connection
+    sockaddr_in clientAddress;
+    socklen_t clientAddressLength = sizeof(clientAddress);
+    clientSocket_ = accept(serverSocket_, (struct sockaddr*)&clientAddress, &clientAddressLength);
+    if (clientSocket_ < 0) {
+        throw SocketException("Failed to accept connection");
+    }
+}
 
 SocketListener::~SocketListener() {
-    Stop();
+    closeSocket();
 }
 
-bool SocketListener::Start() {
-    if (listener_fd != -1 || running) {
-        return false; // Invalid if already started
+int SocketListener::acceptConnection() {
+    if (clientSocket_ < 0) {
+        throw SocketException("No active connection");
     }
 
-    struct sockaddr_in server_address;
-    server_address.sin_family = AF_INET;
-    server_address.sin_port = htons(port);
-    inet_pton(AF_INET, host.c_str(), &(server_address.sin_addr));
-
-    listener_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if (listener_fd == -1) {
-        spdlog::error("Failed to create listener socket.");
-        return false;
-    }
-
-    if (bind(listener_fd, (struct sockaddr*)&server_address, sizeof(server_address)) == -1) {
-        spdlog::error("Failed to bind listener socket.");
-        close(listener_fd);
-        listener_fd = -1;
-        return false;
-    }
-
-    if (listen(listener_fd, 5) == -1) {
-        spdlog::error("Failed to start listening.");
-        close(listener_fd);
-        listener_fd = -1;
-        return false;
-    }
-
-    running = true;
-    listener_thread = std::thread(&SocketListener::Listen, this);
-
-    return true;
+    return clientSocket_;
 }
 
-void SocketListener::Stop() {
-    if (running) {
-        running = false;
-        if (listener_thread.joinable()) {
-            listener_thread.join();
-        }
-
-        if (listener_fd != -1) {
-            close(listener_fd);
-            listener_fd = -1;
-        }
+void SocketListener::closeSocket() {
+    if (clientSocket_ >= 0) {
+        close(clientSocket_);
+        clientSocket_ = -1;
     }
-}
 
-void SocketListener::SetConnectionCallback(ConnectionCallback callback) {
-    connection_callback = callback;
-}
-
-void SocketListener::Listen() {
-    while (running) {
-        struct sockaddr_in client_address;
-        socklen_t client_address_len = sizeof(client_address);
-        int client_fd = accept(listener_fd, (struct sockaddr*)&client_address, &client_address_len);
-        if (client_fd == -1) {
-            spdlog::error("Failed to accept connection.");
-            continue;
-        }
-
-        if (connection_callback) {
-            connection_callback(client_fd);
-        } else {
-            close(client_fd);
-        }
+    if (serverSocket_ >= 0) {
+        close(serverSocket_);
+        serverSocket_ = -1;
     }
 }

@@ -1,48 +1,40 @@
 #include "socket.hpp"
+#include "socket_logger.hpp"
 #include "socket_exception.hpp"
+#include "can_frame.hpp"
 #include "network_config.hpp"
-
-#include <iostream>
 
 #include "spdlog/spdlog.h"
 
 int main() {
     try {
-        const std::string host = NetworkConfig::HOST_ADDR; // Host address
-        const int port = NetworkConfig::PORT_NO;           // Port number
+        // 1. Create a Socket
+        Socket clientSocket(Socket::Type::UDP);
 
-        // Create a Socket and connect to the server
-        Socket socket;
-        if (!socket.Connect(host, port)) {
-            spdlog::error("Failed to connect to the server.");
-            return 1;
-        }
+        // 2. Connection establishment
+        clientSocket.connect(NetworkConfig::HOST_ADDR, NetworkConfig::PORT); // Connect to the server's IP address and port as an example
 
-        // Send data to the server
-        std::string message = "Hello, Server!";
-        if (!socket.Send(message)) {
-            spdlog::error("Failed to send data to the server.");
-            return 1;
-        }
-        spdlog::info("Send message from client!");  // TODO(ninokin): debug        
+        // 3. Data request to server
+        CanFrame requestFrame = {
+            .can_id = 123,  // Any ID
+            .can_dlc = 8,   // Length of data to send (8 bytes)
+            .data = {1, 2, 3, 4, 5, 6, 7, 8} // Data to send
+        };
 
-        // Receive and print the server's response
-        std::string response;
-        if (!socket.Receive(response)) {
-            spdlog::error("Failed to receive data from the server.");
-            return 1;
-        }
+        clientSocket.send(&requestFrame, sizeof(requestFrame));
 
-        spdlog::info("Received from server: {}", response);
+        // 4. Data (reply) from server
+        CanFrame receivedFrame;
+        clientSocket.receive(&receivedFrame, sizeof(receivedFrame));
 
-        // Close the socket
-        socket.Close();
+        // Add logic here to use the data from receivedFrame
+
+        // 5. Close socket
+        // No specific close procedure is required, but if necessary, you can use the following:
+        // clientSocket.close();
+
     } catch (const SocketException& e) {
         spdlog::error("SocketException: {}", e.what());
-        return 1;
-    } catch (const std::exception& e) {
-        spdlog::error("Exception: {}", e.what());
-        return 1;
     }
 
     return 0;

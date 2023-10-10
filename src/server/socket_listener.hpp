@@ -1,32 +1,17 @@
-#ifndef SOCKET_LISTENER_H_
-#define SOCKET_LISTENER_H_
-
-#include <string>
-#include <functional>
-#include <thread>
-#include <atomic>
+#ifndef SOCKET_LISTENER_HPP_
+#define SOCKET_LISTENER_HPP_
 
 class SocketListener {
 public:
-    using ConnectionCallback = std::function<void(int)>;
-
-    SocketListener(const std::string& host, const uint16_t port);
+    SocketListener(int port);
     ~SocketListener();
 
-    bool Start();
-    void Stop();
-
-    void SetConnectionCallback(ConnectionCallback callback);
+    int acceptConnection();
+    void closeSocket();
 
 private:
-    std::string host;
-    uint16_t port;
-    int listener_fd;
-    std::thread listener_thread;
-    std::atomic<bool> running;
-    ConnectionCallback connection_callback;
-
-    void Listen();
+    int serverSocket_;
+    int clientSocket_;
 };
 
-#endif /* SOCKET_LISTENER_H_ */
+#endif /* SOCKET_LISTENER_HPP_ */

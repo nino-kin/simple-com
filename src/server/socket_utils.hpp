@@ -1,14 +1,16 @@
-#ifndef SOCKET_UTILS_H_
-#define SOCKET_UTILS_H_
+#ifndef SOCKET_UTILS_HPP_
+#define SOCKET_UTILS_HPP_
 
 #include <string>
-#include <netinet/in.h>
 
 class SocketUtils {
-    public:
-        static std::string GetIPAddress(const sockaddr_in& sockaddr);
-        static unsigned short GetPort(const sockaddr_in& sockaddr);
-        static in_addr ConvertToIPAddress(const std::string& ip_address);
+public:
+    static std::string resolveHostname(const std::string& hostname);
+    static unsigned short convertPort(const std::string& port);
+    static unsigned short convertPort(int port);
+    static unsigned long convertIp(const std::string& ip);
+    static std::string convertIp(unsigned long ip);
 };
 
-#endif /* SOCKET_UTILS_H_ */
+
+#endif /* SOCKET_UTILS_HPP_ */

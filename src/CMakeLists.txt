@@ -31,7 +31,6 @@ add_executable(${TARGET_NAME}
     server/packet.cpp
     server/socket.cpp
     server/socket_event.cpp
-    server/socket_exception.cpp
     server/socket_listener.cpp
     server/socket_logger.cpp
     server/socket_options.cpp

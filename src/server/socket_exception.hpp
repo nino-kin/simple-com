@@ -1,18 +1,14 @@
-#ifndef SOCKET_EXCEPTION_H_
-#define SOCKET_EXCEPTION_H_
+#ifndef SOCKET_EXCEPTION_HPP_
+#define SOCKET_EXCEPTION_HPP_
 
-#include <exception>
-#include <string>
+#include <stdexcept>
 
-class SocketException : public std::exception {
-    public:
-        SocketException(const std::string& message) : error_message(message) {}
-        virtual const char* what() const noexcept override {
-            return error_message.c_str();
-        }
+#include "spdlog/spdlog.h"
 
-    private:
-        std::string error_message;
+class SocketException : public std::runtime_error {
+public:
+    explicit SocketException(const std::string& message)
+        : std::runtime_error(message) {}
 };
 
-#endif /* SOCKET_EXCEPTION_H_ */
+#endif /* SOCKET_EXCEPTION_HPP_ */

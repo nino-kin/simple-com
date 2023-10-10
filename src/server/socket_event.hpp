@@ -1,24 +1,26 @@
-#ifndef SOCKET_EVENT_H_
-#define SOCKET_EVENT_H_
+#ifndef SOCKET_EVENT_HPP_
+#define SOCKET_EVENT_HPP_
 
-#include <string>
+#include <cstdint>
 
-enum class EventType { CONNECTED, DISCONNECTED, DATA_RECEIVED, ERROR };
+enum class SocketEventType : uint8_t {
+    NONE,
+    READ,
+    WRITE,
+    ERROR
+};
 
 class SocketEvent {
 public:
-    SocketEvent(EventType type);
-    SocketEvent(EventType type, const std::string& data);
-    SocketEvent(EventType type, const std::string& data, int error_code);
+    SocketEvent();
+    SocketEvent(SocketEventType type, int fd);
 
-    EventType GetType() const;
-    std::string GetData() const;
-    int GetErrorCode() const;
+    SocketEventType getType() const;
+    int getFd() const;
 
 private:
-    EventType event_type;
-    std::string event_data;
-    int error_code;
+    SocketEventType type;
+    int fd;
 };
 
-#endif /* SOCKET_EVENT_H_ */
+#endif /* SOCKET_EVENT_HPP_ */
