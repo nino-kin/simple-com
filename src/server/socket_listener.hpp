@@ -3,7 +3,7 @@
 
 class SocketListener {
 public:
-    SocketListener(int port);
+    SocketListener(uint16_t port);
     ~SocketListener();
 
     int acceptConnection();

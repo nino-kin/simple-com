@@ -11,7 +11,7 @@
 
 #include "socket_listener.hpp"
 
-SocketListener::SocketListener(int port) : serverSocket_(-1), clientSocket_(-1) {
+SocketListener::SocketListener(uint16_t port) : serverSocket_(-1), clientSocket_(-1) {
     // Create a TCP socket
     serverSocket_ = socket(AF_INET, SOCK_STREAM, 0);
     if (serverSocket_ < 0) {
