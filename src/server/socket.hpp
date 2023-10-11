@@ -23,6 +23,9 @@ class Socket {
         bool connect(const std::string& ipAddress, uint16_t port);
 
         /// @brief Send data
+        /// @param can_fame CAN frame
+        /// @param dest_ip Destination IP address
+        /// @param dest_port Destination port number
         bool send(const CanFrame& can_frame, const std::string& dest_ip, uint16_t dest_port);
 
         /// @brief Receive data
