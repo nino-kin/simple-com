@@ -4,8 +4,6 @@
 #
 # @(#) docker.sh
 #
-# Author: nino-kin
-#
 # Usage:
 #   docker.sh [param]
 #       (Optional)param: Docker option (e.g. setup, build, run, exec, etc.)
@@ -20,6 +18,7 @@ readonly REPO_NAME=$(basename $(git rev-parse --show-toplevel))
 readonly SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 readonly REPO_ROOT_DIR=$(cd "$SCRIPT_DIR/.." && pwd)
 readonly DOCKER_WORK_DIR="/app"
+readonly TEST_LOG_FILENAME='google_test.log'
 
 # Docker configuration
 readonly USER_NAME='nino-kin'
@@ -78,7 +77,7 @@ test() {
   --name $DOCKER_CONTAINER \
   $DOCKER_MOUNT_OPTION \
   $DOCKER_TAG \
-  bash -c "cmake -S . -B build && cmake --build build && cd build && ctest -VV"
+  bash -c "cmake -S . -B build && cmake --build build && cd build && ctest -VV -O $TEST_LOG_FILENAME"
 }
 
 kill() {
