@@ -1,4 +1,4 @@
-#include "socket_exception.hpp"
+#include "socket/socket_exception.hpp"
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -8,7 +8,7 @@
 #include <cstring>
 #include <iostream>
 
-#include "udp_socket.hpp"
+#include "socket/udp_socket.hpp"
 
 UDPSocket::UDPSocket() {
     socket_fd_ = socket(AF_INET, SOCK_DGRAM, 0);

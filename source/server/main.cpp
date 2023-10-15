@@ -1,10 +1,10 @@
-#include "error_logger.hpp"
 #include "data_processor.hpp"
 #include "network_config.hpp"
-#include "socket.hpp"
-#include "socket_exception.hpp"
-#include "socket_factory.hpp"
-#include "socket_manager.hpp"
+#include "socket/error_logger.hpp"
+#include "socket/socket.hpp"
+#include "socket/socket_exception.hpp"
+#include "socket/socket_factory.hpp"
+#include "socket/socket_manager.hpp"
 
 #include "spdlog/spdlog.h"
 

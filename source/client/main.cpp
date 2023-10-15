@@ -1,10 +1,10 @@
-#include "error_logger.hpp"
-#include "socket.hpp"
-#include "socket_manager.hpp"
-#include "socket_factory.hpp"
-#include "socket_exception.hpp"
 #include "network_config.hpp"
 #include "can/can_frame.hpp"
+#include "socket/error_logger.hpp"
+#include "socket/socket.hpp"
+#include "socket/socket_manager.hpp"
+#include "socket/socket_factory.hpp"
+#include "socket/socket_exception.hpp"
 
 #include <string>
 

@@ -1,4 +1,4 @@
-#include "socket_exception.hpp"
+#include "socket/socket_exception.hpp"
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -8,7 +8,7 @@
 #include <cstring>
 #include <iostream>
 
-#include "tcp_socket.hpp"
+#include "socket/tcp_socket.hpp"
 
 TCPSocket::TCPSocket() {
     socket_fd_ = socket(AF_INET, SOCK_STREAM, 0);
