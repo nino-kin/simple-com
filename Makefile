@@ -3,7 +3,7 @@
 
 SHELL := /bin/bash
 
-PROJECT_NAME := simple-com
+PROJECT_NAME := $(shell basename -s .git `git config --get remote.origin.url`)
 
 PWD := $(shell pwd)
 ROOT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
