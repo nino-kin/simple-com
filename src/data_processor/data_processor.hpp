@@ -2,7 +2,7 @@
 #ifndef DATA_PROCESSOR_HPP_
 #define DATA_PROCESSOR_HPP_
 
-#include "can_frame.hpp"
+#include "can/can_frame.hpp"
 #include <vector>
 
 class DataProcessor {

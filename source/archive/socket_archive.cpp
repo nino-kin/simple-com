@@ -1,5 +1,5 @@
 #include "socket_exception.hpp"
-#include "can_frame.hpp"
+#include "can/can_frame.hpp"
 
 #include <unistd.h>
 #include <sys/types.h>

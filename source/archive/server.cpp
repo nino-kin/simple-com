@@ -1,7 +1,7 @@
 #include "socket_archive.hpp"
 #include "socket_logger.hpp"
 #include "socket_exception.hpp"
-#include "can_frame.hpp"
+#include "can/can_frame.hpp"
 #include "network_config.hpp"
 #include "data_processor.hpp"
 

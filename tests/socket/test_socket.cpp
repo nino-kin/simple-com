@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "socket_archive.hpp"
-#include "can_frame.hpp"
+#include "can/can_frame.hpp"
 #include <thread>
 
 class SocketTest : public ::testing::Test {

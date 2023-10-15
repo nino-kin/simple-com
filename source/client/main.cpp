@@ -4,6 +4,7 @@
 #include "socket_factory.hpp"
 #include "socket_exception.hpp"
 #include "network_config.hpp"
+#include "can/can_frame.hpp"
 
 #include <string>
 

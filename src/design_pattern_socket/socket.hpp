@@ -1,7 +1,7 @@
 #ifndef SOCKET_HPP_
 #define SOCKET_HPP_
 
-#include "can_frame.hpp"
+#include "can/can_frame.hpp"
 
 #include <string>
 
