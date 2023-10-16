@@ -64,6 +64,13 @@ clean: ## Clean all artifacts
 	@sudo rm -rf $(BUILD_DIR)
 	@[ -z "$$(find . -maxdepth 1 -type d -name 'site')" ] || sudo chmod -R 777 site/ && rm -rf site/
 	@[ -z "$$(find . -maxdepth 1 -type d -name 'out')" ] || sudo chmod -R 777 out/ && rm -rf out/
+	@[ -z "$$(find . -maxdepth 1 -type d -name 'package')" ] || sudo chmod -R 777 package/ && rm -rf package/
+
+package: ## Create release packages
+	@echo -e "\nINFO: Creating relase packages..."
+	@echo "================================================================================"
+	@$(ROOT_DIR)/$(SCRIPT_DIR)/package.sh simple-com 1.0.0
+	@echo "================================================================================"
 
 #---------------------------------------#
 # MkDocs                                #
