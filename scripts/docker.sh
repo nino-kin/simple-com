@@ -14,9 +14,9 @@
 ###########################################################################
 set -eu
 
-readonly REPO_NAME=$(basename $(git rev-parse --show-toplevel))
-readonly SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-readonly REPO_ROOT_DIR=$(cd "$SCRIPT_DIR/.." && pwd)
+REPO_NAME=$(basename -s .git "$(git config --get remote.origin.url)")
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+REPO_ROOT_DIR=$(cd "$SCRIPT_DIR/.." && pwd)
 readonly DOCKER_WORK_DIR="/app"
 readonly TEST_LOG_FILENAME='google_test.log'
 
