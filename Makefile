@@ -3,7 +3,7 @@
 
 SHELL := /bin/bash
 
-PROJECT_NAME := simple-com
+PROJECT_NAME := $(shell basename -s .git `git config --get remote.origin.url`)
 
 PWD := $(shell pwd)
 ROOT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
@@ -11,6 +11,7 @@ BUILD_DIR := build
 SCRIPT_DIR := scripts
 
 # Docker
+## Local web server port
 DOCKER_PORT := 8000
 
 # For more information on this technique, see
@@ -63,6 +64,13 @@ clean: ## Clean all artifacts
 	@sudo rm -rf $(BUILD_DIR)
 	@[ -z "$$(find . -maxdepth 1 -type d -name 'site')" ] || sudo chmod -R 777 site/ && rm -rf site/
 	@[ -z "$$(find . -maxdepth 1 -type d -name 'out')" ] || sudo chmod -R 777 out/ && rm -rf out/
+	@[ -z "$$(find . -maxdepth 1 -type d -name 'package')" ] || sudo chmod -R 777 package/ && rm -rf package/
+
+package: ## Create release packages
+	@echo -e "\nINFO: Creating relase packages..."
+	@echo "================================================================================"
+	@$(ROOT_DIR)/$(SCRIPT_DIR)/package.sh simple-com 1.0.0
+	@echo "================================================================================"
 
 #---------------------------------------#
 # MkDocs                                #
