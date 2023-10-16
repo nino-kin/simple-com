@@ -1,0 +1,105 @@
+@startuml Communication diagram
+
+' --------------------------------------------------
+' Element declaration
+' --------------------------------------------------
+class Socket {
+    +bind(port: uint16_t): bool
+    +send(can_frame: CanFrame, dest_ip: std::string, dest_port: uint16_t): bool
+    +receive(can_frame: CanFrame, source_ip: std::string, source_port: uint16_t): bool
+    +getSocketFD(): int
+    +hasError(): bool
+    -socket_fd_: int
+    -error_flag_: bool
+}
+
+class SocketObserver {
+    +update(socket: Socket*): void
+}
+
+class SocketException {
+    +SocketException(message: const std::string&): explicit
+    <<inherits>>
+    +std::runtime_error
+}
+
+class ErrorLogger {
+    +update(socket: Socket*): void
+}
+
+class UDPSocket {
+    +UDPSocket()
+    +~UDPSocket()
+    +bind(port: uint16_t): bool
+    +send(frame: CanFrame, dest_ip: const std::string&, dest_port: uint16_t): bool
+    +receive(frame: CanFrame, source_ip: std::string&, source_port: uint16_t&): bool
+    +close(): void
+}
+
+class TCPSocket {
+    +TCPSocket()
+    +~TCPSocket()
+    +bind(port: uint16_t): bool
+    +listen(backlog: int): bool
+    +accept(clientSocket: TCPSocket&): bool
+    +connect(ip_address: const std::string&, port: uint16_t): bool
+    +send(frame: CanFrame, dest_ip: const std::string&, dest_port: uint16_t): bool
+    +receive(frame: CanFrame, source_ip: std::string&, source_port: uint16_t&): bool
+    +close(): void
+}
+
+class SocketFactory {
+    +createSocket(): Socket*
+}
+
+class UDPSocketFactory {
+    +createSocket(): Socket*
+}
+
+class TCPSocketFactory {
+    +createSocket(): Socket*
+}
+
+class SocketManager {
+    +getInstance(): SocketManager&
+    +getSocket(): Socket*
+    +setSocketFactory(factory: SocketFactory*): void
+    +addObserver(observer: SocketObserver*): void
+    +notifyObservers(socket: Socket*): void
+}
+
+class SocketDecorator {
+    +SocketDecorator(wrapped: Socket*)
+    +send(can_frame: CanFrame, dest_ip: std::string, dest_port: uint16_t): bool
+    +receive(can_frame: CanFrame, source_ip: std::string, source_port: uint16_t): bool
+    -wrapped_: Socket*
+}
+
+struct CanFrame {
+    +id_: uint32_t
+    +rtr_: uint32_t
+    +dlc_: uint8_t
+    +data_: uint8_t[64]
+}
+
+' --------------------------------------------------
+' Relations between classes
+' --------------------------------------------------
+SocketObserver <|-- ErrorLogger
+
+Socket <|-- TCPSocket
+Socket <|-- UDPSocket
+Socket <|-- SocketDecorator
+
+SocketFactory <|-- UDPSocketFactory
+SocketFactory <|-- TCPSocketFactory
+SocketFactory o--> Socket
+
+SocketManager o--> Socket
+SocketManager o--> SocketFactory
+SocketManager o--> SocketObserver
+
+SocketException -- UDPSocket: <<use>>
+SocketException -- TCPSocket: <<use>>
+
+@enduml

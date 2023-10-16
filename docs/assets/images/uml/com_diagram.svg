@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="762px" preserveAspectRatio="none" style="width:1968px;height:762px;background:#FFFFFF;" version="1.1" viewBox="0 0 1968 762" width="1968px" zoomAndPan="magnify"><defs/><g><!--MD5=[8f07f51d887e64eddc161f608ee0ddb0]
+class Socket--><g id="elem_Socket"><rect codeLine="5" fill="#F1F1F1" height="162.0781" id="Socket" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="586" x="904" y="322"/><ellipse cx="1168.75" cy="338" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1171.7188,343.6406 Q1171.1406,343.9375 1170.5,344.0781 Q1169.8594,344.2344 1169.1563,344.2344 Q1166.6563,344.2344 1165.3281,342.5938 Q1164.0156,340.9375 1164.0156,337.8125 Q1164.0156,334.6875 1165.3281,333.0313 Q1166.6563,331.375 1169.1563,331.375 Q1169.8594,331.375 1170.5,331.5313 Q1171.1563,331.6875 1171.7188,331.9844 L1171.7188,334.7031 Q1171.0938,334.125 1170.5,333.8594 Q1169.9063,333.5781 1169.2813,333.5781 Q1167.9375,333.5781 1167.25,334.6563 Q1166.5625,335.7188 1166.5625,337.8125 Q1166.5625,339.9063 1167.25,340.9844 Q1167.9375,342.0469 1169.2813,342.0469 Q1169.9063,342.0469 1170.5,341.7813 Q1171.0938,341.5 1171.7188,340.9219 L1171.7188,343.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="1189.25" y="342.8467">Socket</text><line style="stroke:#181818;stroke-width:0.5;" x1="905" x2="1489" y1="354" y2="354"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="912" y="364.6484"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="924" y="370.9951">socket_fd_: int</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="912" y="380.9453"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="924" y="387.292">error_flag_: bool</text><line style="stroke:#181818;stroke-width:0.5;" x1="905" x2="1489" y1="394.5938" y2="394.5938"/><ellipse cx="915" cy="408.2422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="172" x="924" y="411.5889">bind(port: uint16_t): bool</text><ellipse cx="915" cy="424.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="511" x="924" y="427.8857">send(can_frame: CanFrame, dest_ip: std::string, dest_port: uint16_t): bool</text><ellipse cx="915" cy="440.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="560" x="924" y="444.1826">receive(can_frame: CanFrame, source_ip: std::string, source_port: uint16_t): bool</text><ellipse cx="915" cy="457.1328" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="924" y="460.4795">getSocketFD(): int</text><ellipse cx="915" cy="473.4297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="924" y="476.7764">hasError(): bool</text></g><!--MD5=[bed7f574d20965a258245cb0b808833b]
+class SocketObserver--><g id="elem_SocketObserver"><rect codeLine="15" fill="#F1F1F1" height="64.2969" id="SocketObserver" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="233" x="1424.5" y="197"/><ellipse cx="1481.25" cy="213" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1484.2188,218.6406 Q1483.6406,218.9375 1483,219.0781 Q1482.3594,219.2344 1481.6563,219.2344 Q1479.1563,219.2344 1477.8281,217.5938 Q1476.5156,215.9375 1476.5156,212.8125 Q1476.5156,209.6875 1477.8281,208.0313 Q1479.1563,206.375 1481.6563,206.375 Q1482.3594,206.375 1483,206.5313 Q1483.6563,206.6875 1484.2188,206.9844 L1484.2188,209.7031 Q1483.5938,209.125 1483,208.8594 Q1482.4063,208.5781 1481.7813,208.5781 Q1480.4375,208.5781 1479.75,209.6563 Q1479.0625,210.7188 1479.0625,212.8125 Q1479.0625,214.9063 1479.75,215.9844 Q1480.4375,217.0469 1481.7813,217.0469 Q1482.4063,217.0469 1483,216.7813 Q1483.5938,216.5 1484.2188,215.9219 L1484.2188,218.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="1501.75" y="217.8467">SocketObserver</text><line style="stroke:#181818;stroke-width:0.5;" x1="1425.5" x2="1656.5" y1="229" y2="229"/><line style="stroke:#181818;stroke-width:0.5;" x1="1425.5" x2="1656.5" y1="237" y2="237"/><ellipse cx="1435.5" cy="250.6484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="207" x="1444.5" y="253.9951">update(socket: Socket*): void</text></g><!--MD5=[df431f9cacff6be48f8596da1f1f097c]
+class SocketException--><g id="elem_SocketException"><rect codeLine="19" fill="#F1F1F1" height="96.8906" id="SocketException" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="407" x="234.5" y="354.5"/><ellipse cx="375.75" cy="370.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M378.7188,376.1406 Q378.1406,376.4375 377.5,376.5781 Q376.8594,376.7344 376.1563,376.7344 Q373.6563,376.7344 372.3281,375.0938 Q371.0156,373.4375 371.0156,370.3125 Q371.0156,367.1875 372.3281,365.5313 Q373.6563,363.875 376.1563,363.875 Q376.8594,363.875 377.5,364.0313 Q378.1563,364.1875 378.7188,364.4844 L378.7188,367.2031 Q378.0938,366.625 377.5,366.3594 Q376.9063,366.0781 376.2813,366.0781 Q374.9375,366.0781 374.25,367.1563 Q373.5625,368.2188 373.5625,370.3125 Q373.5625,372.4063 374.25,373.4844 Q374.9375,374.5469 376.2813,374.5469 Q376.9063,374.5469 377.5,374.2813 Q378.0938,374 378.7188,373.4219 L378.7188,376.1406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="396.25" y="375.3467">SocketException</text><line style="stroke:#181818;stroke-width:0.5;" x1="235.5" x2="640.5" y1="386.5" y2="386.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="254.5" y="403.4951">«inherits»</text><ellipse cx="245.5" cy="416.4453" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="254.5" y="419.792">std::runtime_error</text><line style="stroke:#181818;stroke-width:0.5;" x1="235.5" x2="640.5" y1="427.0938" y2="427.0938"/><ellipse cx="245.5" cy="440.7422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="381" x="254.5" y="444.0889">SocketException(message: const std::string&amp;): explicit</text></g><!--MD5=[a25c365746e248f478f6f6992d6cd34f]
+class ErrorLogger--><g id="elem_ErrorLogger"><rect codeLine="25" fill="#F1F1F1" height="64.2969" id="ErrorLogger" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="233" x="1525.5" y="371"/><ellipse cx="1597.25" cy="387" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1600.2188,392.6406 Q1599.6406,392.9375 1599,393.0781 Q1598.3594,393.2344 1597.6563,393.2344 Q1595.1563,393.2344 1593.8281,391.5938 Q1592.5156,389.9375 1592.5156,386.8125 Q1592.5156,383.6875 1593.8281,382.0313 Q1595.1563,380.375 1597.6563,380.375 Q1598.3594,380.375 1599,380.5313 Q1599.6563,380.6875 1600.2188,380.9844 L1600.2188,383.7031 Q1599.5938,383.125 1599,382.8594 Q1598.4063,382.5781 1597.7813,382.5781 Q1596.4375,382.5781 1595.75,383.6563 Q1595.0625,384.7188 1595.0625,386.8125 Q1595.0625,388.9063 1595.75,389.9844 Q1596.4375,391.0469 1597.7813,391.0469 Q1598.4063,391.0469 1599,390.7813 Q1599.5938,390.5 1600.2188,389.9219 L1600.2188,392.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="1617.75" y="391.8467">ErrorLogger</text><line style="stroke:#181818;stroke-width:0.5;" x1="1526.5" x2="1757.5" y1="403" y2="403"/><line style="stroke:#181818;stroke-width:0.5;" x1="1526.5" x2="1757.5" y1="411" y2="411"/><ellipse cx="1536.5" cy="424.6484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="207" x="1545.5" y="427.9951">update(socket: Socket*): void</text></g><!--MD5=[74c72a688209b27890b5c38460ae31c9]
+class UDPSocket--><g id="elem_UDPSocket"><rect codeLine="29" fill="#F1F1F1" height="145.7813" id="UDPSocket" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="578" x="149" y="585.5"/><ellipse cx="394.75" cy="601.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M397.7188,607.1406 Q397.1406,607.4375 396.5,607.5781 Q395.8594,607.7344 395.1563,607.7344 Q392.6563,607.7344 391.3281,606.0938 Q390.0156,604.4375 390.0156,601.3125 Q390.0156,598.1875 391.3281,596.5313 Q392.6563,594.875 395.1563,594.875 Q395.8594,594.875 396.5,595.0313 Q397.1563,595.1875 397.7188,595.4844 L397.7188,598.2031 Q397.0938,597.625 396.5,597.3594 Q395.9063,597.0781 395.2813,597.0781 Q393.9375,597.0781 393.25,598.1563 Q392.5625,599.2188 392.5625,601.3125 Q392.5625,603.4063 393.25,604.4844 Q393.9375,605.5469 395.2813,605.5469 Q395.9063,605.5469 396.5,605.2813 Q397.0938,605 397.7188,604.4219 L397.7188,607.1406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="415.25" y="606.3467">UDPSocket</text><line style="stroke:#181818;stroke-width:0.5;" x1="150" x2="726" y1="617.5" y2="617.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="150" x2="726" y1="625.5" y2="625.5"/><ellipse cx="160" cy="639.1484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88" x="169" y="642.4951">UDPSocket()</text><ellipse cx="160" cy="655.4453" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="169" y="658.792">~UDPSocket()</text><ellipse cx="160" cy="671.7422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="172" x="169" y="675.0889">bind(port: uint16_t): bool</text><ellipse cx="160" cy="688.0391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="534" x="169" y="691.3857">send(frame: CanFrame, dest_ip: const std::string&amp;, dest_port: uint16_t): bool</text><ellipse cx="160" cy="704.3359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="552" x="169" y="707.6826">receive(frame: CanFrame, source_ip: std::string&amp;, source_port: uint16_t&amp;): bool</text><ellipse cx="160" cy="720.6328" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="169" y="723.9795">close(): void</text></g><!--MD5=[8728b258bf447ef8b930be378bd382a7]
+class TCPSocket--><g id="elem_TCPSocket"><rect codeLine="38" fill="#F1F1F1" height="194.6719" id="TCPSocket" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="578" x="762" y="561"/><ellipse cx="1008.75" cy="577" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1011.7188,582.6406 Q1011.1406,582.9375 1010.5,583.0781 Q1009.8594,583.2344 1009.1563,583.2344 Q1006.6563,583.2344 1005.3281,581.5938 Q1004.0156,579.9375 1004.0156,576.8125 Q1004.0156,573.6875 1005.3281,572.0313 Q1006.6563,570.375 1009.1563,570.375 Q1009.8594,570.375 1010.5,570.5313 Q1011.1563,570.6875 1011.7188,570.9844 L1011.7188,573.7031 Q1011.0938,573.125 1010.5,572.8594 Q1009.9063,572.5781 1009.2813,572.5781 Q1007.9375,572.5781 1007.25,573.6563 Q1006.5625,574.7188 1006.5625,576.8125 Q1006.5625,578.9063 1007.25,579.9844 Q1007.9375,581.0469 1009.2813,581.0469 Q1009.9063,581.0469 1010.5,580.7813 Q1011.0938,580.5 1011.7188,579.9219 L1011.7188,582.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="1029.25" y="581.8467">TCPSocket</text><line style="stroke:#181818;stroke-width:0.5;" x1="763" x2="1339" y1="593" y2="593"/><line style="stroke:#181818;stroke-width:0.5;" x1="763" x2="1339" y1="601" y2="601"/><ellipse cx="773" cy="614.6484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="86" x="782" y="617.9951">TCPSocket()</text><ellipse cx="773" cy="630.9453" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="782" y="634.292">~TCPSocket()</text><ellipse cx="773" cy="647.2422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="172" x="782" y="650.5889">bind(port: uint16_t): bool</text><ellipse cx="773" cy="663.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="782" y="666.8857">listen(backlog: int): bool</text><ellipse cx="773" cy="679.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="278" x="782" y="683.1826">accept(clientSocket: TCPSocket&amp;): bool</text><ellipse cx="773" cy="696.1328" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="417" x="782" y="699.4795">connect(ip_address: const std::string&amp;, port: uint16_t): bool</text><ellipse cx="773" cy="712.4297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="534" x="782" y="715.7764">send(frame: CanFrame, dest_ip: const std::string&amp;, dest_port: uint16_t): bool</text><ellipse cx="773" cy="728.7266" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="552" x="782" y="732.0732">receive(frame: CanFrame, source_ip: std::string&amp;, source_port: uint16_t&amp;): bool</text><ellipse cx="773" cy="745.0234" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="782" y="748.3701">close(): void</text></g><!--MD5=[39124c94d20772991483765f73694b3b]
+class SocketFactory--><g id="elem_SocketFactory"><rect codeLine="50" fill="#F1F1F1" height="64.2969" id="SocketFactory" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="192" x="815" y="197"/><ellipse cx="857.9" cy="213" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M860.8688,218.6406 Q860.2906,218.9375 859.65,219.0781 Q859.0094,219.2344 858.3063,219.2344 Q855.8063,219.2344 854.4781,217.5938 Q853.1656,215.9375 853.1656,212.8125 Q853.1656,209.6875 854.4781,208.0313 Q855.8063,206.375 858.3063,206.375 Q859.0094,206.375 859.65,206.5313 Q860.3063,206.6875 860.8688,206.9844 L860.8688,209.7031 Q860.2438,209.125 859.65,208.8594 Q859.0563,208.5781 858.4313,208.5781 Q857.0875,208.5781 856.4,209.6563 Q855.7125,210.7188 855.7125,212.8125 Q855.7125,214.9063 856.4,215.9844 Q857.0875,217.0469 858.4313,217.0469 Q859.0563,217.0469 859.65,216.7813 Q860.2438,216.5 860.8688,215.9219 L860.8688,218.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="878.1" y="217.8467">SocketFactory</text><line style="stroke:#181818;stroke-width:0.5;" x1="816" x2="1006" y1="229" y2="229"/><line style="stroke:#181818;stroke-width:0.5;" x1="816" x2="1006" y1="237" y2="237"/><ellipse cx="826" cy="250.6484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="835" y="253.9951">createSocket(): Socket*</text></g><!--MD5=[6b04347143398d55faf945e44273b85c]
+class UDPSocketFactory--><g id="elem_UDPSocketFactory"><rect codeLine="54" fill="#F1F1F1" height="64.2969" id="UDPSocketFactory" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="192" x="677" y="371"/><ellipse cx="706.4" cy="387" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M709.3688,392.6406 Q708.7906,392.9375 708.15,393.0781 Q707.5094,393.2344 706.8063,393.2344 Q704.3063,393.2344 702.9781,391.5938 Q701.6656,389.9375 701.6656,386.8125 Q701.6656,383.6875 702.9781,382.0313 Q704.3063,380.375 706.8063,380.375 Q707.5094,380.375 708.15,380.5313 Q708.8063,380.6875 709.3688,380.9844 L709.3688,383.7031 Q708.7438,383.125 708.15,382.8594 Q707.5563,382.5781 706.9313,382.5781 Q705.5875,382.5781 704.9,383.6563 Q704.2125,384.7188 704.2125,386.8125 Q704.2125,388.9063 704.9,389.9844 Q705.5875,391.0469 706.9313,391.0469 Q707.5563,391.0469 708.15,390.7813 Q708.7438,390.5 709.3688,389.9219 L709.3688,392.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="723.6" y="391.8467">UDPSocketFactory</text><line style="stroke:#181818;stroke-width:0.5;" x1="678" x2="868" y1="403" y2="403"/><line style="stroke:#181818;stroke-width:0.5;" x1="678" x2="868" y1="411" y2="411"/><ellipse cx="688" cy="424.6484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="697" y="427.9951">createSocket(): Socket*</text></g><!--MD5=[eda54cfefae176d977f17023a7f54b0a]
+class TCPSocketFactory--><g id="elem_TCPSocketFactory"><rect codeLine="58" fill="#F1F1F1" height="64.2969" id="TCPSocketFactory" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="192" x="7" y="371"/><ellipse cx="37.3" cy="387" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M40.2688,392.6406 Q39.6906,392.9375 39.05,393.0781 Q38.4094,393.2344 37.7063,393.2344 Q35.2063,393.2344 33.8781,391.5938 Q32.5656,389.9375 32.5656,386.8125 Q32.5656,383.6875 33.8781,382.0313 Q35.2063,380.375 37.7063,380.375 Q38.4094,380.375 39.05,380.5313 Q39.7063,380.6875 40.2688,380.9844 L40.2688,383.7031 Q39.6438,383.125 39.05,382.8594 Q38.4563,382.5781 37.8313,382.5781 Q36.4875,382.5781 35.8,383.6563 Q35.1125,384.7188 35.1125,386.8125 Q35.1125,388.9063 35.8,389.9844 Q36.4875,391.0469 37.8313,391.0469 Q38.4563,391.0469 39.05,390.7813 Q39.6438,390.5 40.2688,389.9219 L40.2688,392.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="54.7" y="391.8467">TCPSocketFactory</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="198" y1="403" y2="403"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="198" y1="411" y2="411"/><ellipse cx="18" cy="424.6484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="27" y="427.9951">createSocket(): Socket*</text></g><!--MD5=[e06f62a07b6932c463feac5c77aa5ac9]
+class SocketManager--><g id="elem_SocketManager"><rect codeLine="62" fill="#F1F1F1" height="129.4844" id="SocketManager" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="353" x="1020.5" y="7"/><ellipse cx="1138.75" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1141.7188,28.6406 Q1141.1406,28.9375 1140.5,29.0781 Q1139.8594,29.2344 1139.1563,29.2344 Q1136.6563,29.2344 1135.3281,27.5938 Q1134.0156,25.9375 1134.0156,22.8125 Q1134.0156,19.6875 1135.3281,18.0313 Q1136.6563,16.375 1139.1563,16.375 Q1139.8594,16.375 1140.5,16.5313 Q1141.1563,16.6875 1141.7188,16.9844 L1141.7188,19.7031 Q1141.0938,19.125 1140.5,18.8594 Q1139.9063,18.5781 1139.2813,18.5781 Q1137.9375,18.5781 1137.25,19.6563 Q1136.5625,20.7188 1136.5625,22.8125 Q1136.5625,24.9063 1137.25,25.9844 Q1137.9375,27.0469 1139.2813,27.0469 Q1139.9063,27.0469 1140.5,26.7813 Q1141.0938,26.5 1141.7188,25.9219 L1141.7188,28.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108" x="1159.25" y="27.8467">SocketManager</text><line style="stroke:#181818;stroke-width:0.5;" x1="1021.5" x2="1372.5" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="1021.5" x2="1372.5" y1="47" y2="47"/><ellipse cx="1031.5" cy="60.6484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="221" x="1040.5" y="63.9951">getInstance(): SocketManager&amp;</text><ellipse cx="1031.5" cy="76.9453" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="145" x="1040.5" y="80.292">getSocket(): Socket*</text><ellipse cx="1031.5" cy="93.2422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="327" x="1040.5" y="96.5889">setSocketFactory(factory: SocketFactory*): void</text><ellipse cx="1031.5" cy="109.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="324" x="1040.5" y="112.8857">addObserver(observer: SocketObserver*): void</text><ellipse cx="1031.5" cy="125.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="266" x="1040.5" y="129.1826">notifyObservers(socket: Socket*): void</text></g><!--MD5=[7fc76726e1e4bd226926068bcd354fb5]
+class SocketDecorator--><g id="elem_SocketDecorator"><rect codeLine="70" fill="#F1F1F1" height="113.1875" id="SocketDecorator" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="586" x="1375" y="602"/><ellipse cx="1605.25" cy="618" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1608.2188,623.6406 Q1607.6406,623.9375 1607,624.0781 Q1606.3594,624.2344 1605.6563,624.2344 Q1603.1563,624.2344 1601.8281,622.5938 Q1600.5156,620.9375 1600.5156,617.8125 Q1600.5156,614.6875 1601.8281,613.0313 Q1603.1563,611.375 1605.6563,611.375 Q1606.3594,611.375 1607,611.5313 Q1607.6563,611.6875 1608.2188,611.9844 L1608.2188,614.7031 Q1607.5938,614.125 1607,613.8594 Q1606.4063,613.5781 1605.7813,613.5781 Q1604.4375,613.5781 1603.75,614.6563 Q1603.0625,615.7188 1603.0625,617.8125 Q1603.0625,619.9063 1603.75,620.9844 Q1604.4375,622.0469 1605.7813,622.0469 Q1606.4063,622.0469 1607,621.7813 Q1607.5938,621.5 1608.2188,620.9219 L1608.2188,623.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="1625.75" y="622.8467">SocketDecorator</text><line style="stroke:#181818;stroke-width:0.5;" x1="1376" x2="1960" y1="634" y2="634"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1383" y="644.6484"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="131" x="1395" y="650.9951">wrapped_: Socket*</text><line style="stroke:#181818;stroke-width:0.5;" x1="1376" x2="1960" y1="658.2969" y2="658.2969"/><ellipse cx="1386" cy="671.9453" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="251" x="1395" y="675.292">SocketDecorator(wrapped: Socket*)</text><ellipse cx="1386" cy="688.2422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="511" x="1395" y="691.5889">send(can_frame: CanFrame, dest_ip: std::string, dest_port: uint16_t): bool</text><ellipse cx="1386" cy="704.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="560" x="1395" y="707.8857">receive(can_frame: CanFrame, source_ip: std::string, source_port: uint16_t): bool</text></g><!--MD5=[994036f8e93225164610d6e2e301e1a9]
+class CanFrame--><g id="elem_CanFrame"><rect codeLine="77" fill="#F1F1F1" height="113.1875" id="CanFrame" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="147" x="1408.5" y="15"/><ellipse cx="1443.75" cy="31" fill="#F1F1F1" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1443.2344,31.5625 Q1441.375,30.8594 1440.7188,30.0938 Q1440.0781,29.3125 1440.0781,28 Q1440.0781,26.3125 1441.1563,25.3438 Q1442.2344,24.375 1444.1094,24.375 Q1444.9688,24.375 1445.8125,24.5781 Q1446.6719,24.7656 1447.5156,25.1563 L1447.5156,27.5469 Q1446.7344,26.9844 1445.9063,26.7031 Q1445.0938,26.4063 1444.2969,26.4063 Q1443.4219,26.4063 1442.9375,26.7656 Q1442.4688,27.125 1442.4688,27.7813 Q1442.4688,28.2969 1442.8125,28.6406 Q1443.1563,28.9688 1444.25,29.375 L1445.3125,29.7813 Q1446.7969,30.3281 1447.5,31.2344 Q1448.2188,32.1406 1448.2188,33.5156 Q1448.2188,35.3906 1447.1094,36.3125 Q1446,37.2344 1443.75,37.2344 Q1442.8281,37.2344 1441.9063,37.0156 Q1440.9844,36.7969 1440.125,36.375 L1440.125,33.8438 Q1441.0938,34.5313 1442.0156,34.875 Q1442.9375,35.2188 1443.8281,35.2188 Q1444.7344,35.2188 1445.2344,34.8125 Q1445.7344,34.3906 1445.7344,33.6563 Q1445.7344,33.0938 1445.3906,32.6875 Q1445.0625,32.2656 1444.4375,32.0156 L1443.2344,31.5625 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="1462.25" y="35.8467">CanFrame</text><line style="stroke:#181818;stroke-width:0.5;" x1="1409.5" x2="1554.5" y1="47" y2="47"/><ellipse cx="1419.5" cy="60.6484" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="1428.5" y="63.9951">id_: uint32_t</text><ellipse cx="1419.5" cy="76.9453" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="1428.5" y="80.292">rtr_: uint32_t</text><ellipse cx="1419.5" cy="93.2422" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="1428.5" y="96.5889">dlc_: uint8_t</text><ellipse cx="1419.5" cy="109.5391" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="1428.5" y="112.8857">data_: uint8_t[64]</text><line style="stroke:#181818;stroke-width:0.5;" x1="1409.5" x2="1554.5" y1="120.1875" y2="120.1875"/></g><!--MD5=[689a9920dcc14e2e84637dd0ebe61bc3]
+reverse link SocketObserver to ErrorLogger--><g id="link_SocketObserver_ErrorLogger"><path codeLine="87" d="M1569.46,278.46 C1586.84,308.06 1608.55,345.04 1623.68,370.79 " fill="none" id="SocketObserver-backto-ErrorLogger" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="1563.38,281.94,1559.29,261.15,1575.45,274.85,1563.38,281.94" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[1350f38fcbd2ed85bddd06520a9ff1ab]
+reverse link Socket to TCPSocket--><g id="link_Socket_TCPSocket"><path codeLine="89" d="M1140.72,501.73 C1129.53,521.16 1117.78,541.55 1106.61,560.94 " fill="none" id="Socket-backto-TCPSocket" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="1134.76,498.05,1150.8,484.21,1146.89,505.03,1134.76,498.05" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[427ff176960090ebe7815f2dfe2d2490]
+reverse link Socket to UDPSocket--><g id="link_Socket_UDPSocket"><path codeLine="90" d="M938.38,490.38 C845.75,521.32 742.38,555.84 653.75,585.44 " fill="none" id="Socket-backto-UDPSocket" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="936.18,483.73,957.37,484.03,940.62,497.01,936.18,483.73" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[156a3ebb7373afc75e1e11f3cff3c3c9]
+reverse link Socket to SocketDecorator--><g id="link_Socket_SocketDecorator"><path codeLine="91" d="M1363.48,493.6 C1430.6,529.73 1505.92,570.27 1564.86,601.99 " fill="none" id="Socket-backto-SocketDecorator" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="1360,499.68,1345.7,484.03,1366.63,487.35,1360,499.68" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[2ef184ddddd16359e191e297ea49eb74]
+reverse link SocketFactory to UDPSocketFactory--><g id="link_SocketFactory_UDPSocketFactory"><path codeLine="93" d="M873.46,276.79 C849.49,306.66 819.09,344.56 798.04,370.79 " fill="none" id="SocketFactory-backto-UDPSocketFactory" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="868.03,272.37,886.01,261.15,878.95,281.13,868.03,272.37" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[b6db12949c600322779e25069a90be7b]
+reverse link SocketFactory to TCPSocketFactory--><g id="link_SocketFactory_TCPSocketFactory"><path codeLine="94" d="M794.98,238.66 C625.64,252.43 319.76,281.93 217,322 C187.94,333.33 159.22,353.56 137.88,370.84 " fill="none" id="SocketFactory-backto-TCPSocketFactory" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="794.44,231.68,814.94,237.06,795.56,245.63,794.44,231.68" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[d38cbbfade706151a51afeb573773bdb]
+link SocketFactory to Socket--><g id="link_SocketFactory_Socket"><path codeLine="95" d="M973.0741,267.3336 C973.0741,267.3336 1024.85,298.47 1052.34,315 " fill="none" id="SocketFactory-Socket" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1063.7,321.83,1058.0481,313.7642,1059.415,319.2535,1053.9257,320.6203,1063.7,321.83" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1059.415" x2="1052.555" y1="319.2535" y2="315.13"/><polygon fill="none" points="962.79,261.15,965.8708,267.6699,973.0741,267.3336,969.9933,260.8138,962.79,261.15" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[6bdb9310ec904145aed7af6b4313136c]
+link SocketManager to Socket--><g id="link_SocketManager_Socket"><path codeLine="97" d="M1197,148.03 C1197,148.03 1197,258.12 1197,308.51 " fill="none" id="SocketManager-Socket" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1197,321.74,1201,312.74,1197,316.74,1193,312.74,1197,321.74" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1197" x2="1197" y1="316.74" y2="308.74"/><polygon fill="none" points="1197,136.03,1193,142.03,1197,148.03,1201,142.03,1197,136.03" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[1089b27f4886107fb2df2e8b38c19374]
+link SocketManager to SocketFactory--><g id="link_SocketManager_SocketFactory"><path codeLine="98" d="M1069.3107,141.9379 C1069.3107,141.9379 1006.17,176.26 979.57,190.72 " fill="none" id="SocketManager-SocketFactory" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="968.1,196.96,977.9171,196.1697,972.4914,194.5692,974.0918,189.1435,968.1,196.96" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="972.4914" x2="979.515" y1="194.5692" y2="190.745"/><polygon fill="none" points="1079.85,136.2,1072.6677,135.5559,1069.3107,141.9379,1076.493,142.582,1079.85,136.2" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[e80026ec9d6155a7b5183cff90278b2f]
+link SocketManager to SocketObserver--><g id="link_SocketManager_SocketObserver"><path codeLine="99" d="M1348.8434,141.1458 C1348.8434,141.1458 1427.42,176.66 1460.46,191.59 " fill="none" id="SocketManager-SocketObserver" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1472.33,196.96,1465.7712,189.6128,1467.7723,194.9038,1462.4813,196.905,1472.33,196.96" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1467.7723" x2="1460.48" y1="194.9038" y2="191.605"/><polygon fill="none" points="1337.91,136.2,1341.7281,142.3173,1348.8434,141.1458,1345.0253,135.0284,1337.91,136.2" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[3bfae1b33c36d3f0a156a01bac0da622]
+link SocketException to UDPSocket--><g id="link_SocketException_UDPSocket"><path codeLine="101" d="M438,451.68 C438,489.26 438,542.27 438,585.09 " fill="none" id="SocketException-UDPSocket" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="39" x="439" y="527.0669">«use»</text></g><!--MD5=[e7c70ac9cb8c276a5476631f1d4c3680]
+link SocketException to TCPSocket--><g id="link_SocketException_TCPSocket"><path codeLine="102" d="M552.94,451.53 C627.39,482.32 727.01,523.52 817.58,560.97 " fill="none" id="SocketException-TCPSocket" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="39" x="746" y="527.0669">«use»</text></g><!--MD5=[cc670d5c839c01d8e118a1134994c4c0]
+@startuml Communication diagram
+
+' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+' Element declaration
+' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+class Socket {
+    +bind(port: uint16_t): bool
+    +send(can_frame: CanFrame, dest_ip: std::string, dest_port: uint16_t): bool
+    +receive(can_frame: CanFrame, source_ip: std::string, source_port: uint16_t): bool
+    +getSocketFD(): int
+    +hasError(): bool
+    -socket_fd_: int
+    -error_flag_: bool
+}
+
+class SocketObserver {
+    +update(socket: Socket*): void
+}
+
+class SocketException {
+    +SocketException(message: const std::string&): explicit
+    <<inherits>>
+    +std::runtime_error
+}
+
+class ErrorLogger {
+    +update(socket: Socket*): void
+}
+
+class UDPSocket {
+    +UDPSocket()
+    +~UDPSocket()
+    +bind(port: uint16_t): bool
+    +send(frame: CanFrame, dest_ip: const std::string&, dest_port: uint16_t): bool
+    +receive(frame: CanFrame, source_ip: std::string&, source_port: uint16_t&): bool
+    +close(): void
+}
+
+class TCPSocket {
+    +TCPSocket()
+    +~TCPSocket()
+    +bind(port: uint16_t): bool
+    +listen(backlog: int): bool
+    +accept(clientSocket: TCPSocket&): bool
+    +connect(ip_address: const std::string&, port: uint16_t): bool
+    +send(frame: CanFrame, dest_ip: const std::string&, dest_port: uint16_t): bool
+    +receive(frame: CanFrame, source_ip: std::string&, source_port: uint16_t&): bool
+    +close(): void
+}
+
+class SocketFactory {
+    +createSocket(): Socket*
+}
+
+class UDPSocketFactory {
+    +createSocket(): Socket*
+}
+
+class TCPSocketFactory {
+    +createSocket(): Socket*
+}
+
+class SocketManager {
+    +getInstance(): SocketManager&
+    +getSocket(): Socket*
+    +setSocketFactory(factory: SocketFactory*): void
+    +addObserver(observer: SocketObserver*): void
+    +notifyObservers(socket: Socket*): void
+}
+
+class SocketDecorator {
+    +SocketDecorator(wrapped: Socket*)
+    +send(can_frame: CanFrame, dest_ip: std::string, dest_port: uint16_t): bool
+    +receive(can_frame: CanFrame, source_ip: std::string, source_port: uint16_t): bool
+    -wrapped_: Socket*
+}
+
+struct CanFrame {
+    +id_: uint32_t
+    +rtr_: uint32_t
+    +dlc_: uint8_t
+    +data_: uint8_t[64]
+}
+
+' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+' Relations between classes
+' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+SocketObserver <|- - ErrorLogger
+
+Socket <|- - TCPSocket
+Socket <|- - UDPSocket
+Socket <|- - SocketDecorator
+
+SocketFactory <|- - UDPSocketFactory
+SocketFactory <|- - TCPSocketFactory
+SocketFactory o- -> Socket
+
+SocketManager o- -> Socket
+SocketManager o- -> SocketFactory
+SocketManager o- -> SocketObserver
+
+SocketException - - UDPSocket: <<use>>
+SocketException - - TCPSocket: <<use>>
+
+@enduml
+
+@startuml Communication diagram
+
+class Socket {
+    +bind(port: uint16_t): bool
+    +send(can_frame: CanFrame, dest_ip: std::string, dest_port: uint16_t): bool
+    +receive(can_frame: CanFrame, source_ip: std::string, source_port: uint16_t): bool
+    +getSocketFD(): int
+    +hasError(): bool
+    -socket_fd_: int
+    -error_flag_: bool
+}
+
+class SocketObserver {
+    +update(socket: Socket*): void
+}
+
+class SocketException {
+    +SocketException(message: const std::string&): explicit
+    <<inherits>>
+    +std::runtime_error
+}
+
+class ErrorLogger {
+    +update(socket: Socket*): void
+}
+
+class UDPSocket {
+    +UDPSocket()
+    +~UDPSocket()
+    +bind(port: uint16_t): bool
+    +send(frame: CanFrame, dest_ip: const std::string&, dest_port: uint16_t): bool
+    +receive(frame: CanFrame, source_ip: std::string&, source_port: uint16_t&): bool
+    +close(): void
+}
+
+class TCPSocket {
+    +TCPSocket()
+    +~TCPSocket()
+    +bind(port: uint16_t): bool
+    +listen(backlog: int): bool
+    +accept(clientSocket: TCPSocket&): bool
+    +connect(ip_address: const std::string&, port: uint16_t): bool
+    +send(frame: CanFrame, dest_ip: const std::string&, dest_port: uint16_t): bool
+    +receive(frame: CanFrame, source_ip: std::string&, source_port: uint16_t&): bool
+    +close(): void
+}
+
+class SocketFactory {
+    +createSocket(): Socket*
+}
+
+class UDPSocketFactory {
+    +createSocket(): Socket*
+}
+
+class TCPSocketFactory {
+    +createSocket(): Socket*
+}
+
+class SocketManager {
+    +getInstance(): SocketManager&
+    +getSocket(): Socket*
+    +setSocketFactory(factory: SocketFactory*): void
+    +addObserver(observer: SocketObserver*): void
+    +notifyObservers(socket: Socket*): void
+}
+
+class SocketDecorator {
+    +SocketDecorator(wrapped: Socket*)
+    +send(can_frame: CanFrame, dest_ip: std::string, dest_port: uint16_t): bool
+    +receive(can_frame: CanFrame, source_ip: std::string, source_port: uint16_t): bool
+    -wrapped_: Socket*
+}
+
+struct CanFrame {
+    +id_: uint32_t
+    +rtr_: uint32_t
+    +dlc_: uint8_t
+    +data_: uint8_t[64]
+}
+
+SocketObserver <|- - ErrorLogger
+
+Socket <|- - TCPSocket
+Socket <|- - UDPSocket
+Socket <|- - SocketDecorator
+
+SocketFactory <|- - UDPSocketFactory
+SocketFactory <|- - TCPSocketFactory
+SocketFactory o- -> Socket
+
+SocketManager o- -> Socket
+SocketManager o- -> SocketFactory
+SocketManager o- -> SocketObserver
+
+SocketException - - UDPSocket: <<use>>
+SocketException - - TCPSocket: <<use>>
+
+@enduml
+
+PlantUML version 1.2022.7(Tue Aug 23 02:01:30 JST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

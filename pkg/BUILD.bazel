@@ -1,0 +1,19 @@
+cc_import(
+    name = "libsocket",
+    static_library = "lib/libsocket.a",
+    # If alwayslink is turned on,
+    # libmylib.a will be forcely linked into any binary that depends on it.
+    # alwayslink = 1,
+)
+
+cc_library(
+    name = "libcom-socket",
+    hdrs = glob([
+        "include/**/*.hpp",
+    ]),
+    strip_include_prefix = "include",
+    deps = [
+        ":libsocket"
+    ],
+    visibility = ["//visibility:public"],
+)
