@@ -43,12 +43,12 @@ TEST_F(SocketTest, SendingAndReceiving) {
 
         serverSocket.receive(receivedFrame, sourceIP, sourcePort);
 
-        // ASSERT_EQ(frameToSend.id_, receivedFrame.id_);
-        // ASSERT_EQ(frameToSend.rtr_, receivedFrame.rtr_);
-        // ASSERT_EQ(frameToSend.dlc_, receivedFrame.dlc_);
-        // for (int i = 0; i < DLC_MAX_SIZE; ++i) {
-        //     ASSERT_EQ(frameToSend.data_[i], receivedFrame.data_[i]);
-        // }
+        ASSERT_EQ(frameToSend.id_, receivedFrame.id_);
+        ASSERT_EQ(frameToSend.rtr_, receivedFrame.rtr_);
+        ASSERT_EQ(frameToSend.dlc_, receivedFrame.dlc_);
+        for (int i = 0; i < DLC_MAX_SIZE; ++i) {
+            ASSERT_EQ(frameToSend.data_[i], receivedFrame.data_[i]);
+        }
     });
 
     // 4. Send data
