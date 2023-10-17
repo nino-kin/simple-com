@@ -3,6 +3,13 @@
 ' --------------------------------------------------
 ' Element declaration
 ' --------------------------------------------------
+' Visibility
+' ----------
+' - | private
+' # | protected
+' ~ | package private
+' + | public
+
 class Socket {
     +bind(port: uint16_t): bool
     +send(can_frame: CanFrame, dest_ip: std::string, dest_port: uint16_t): bool
@@ -85,6 +92,14 @@ struct CanFrame {
 ' --------------------------------------------------
 ' Relations between classes
 ' --------------------------------------------------
+' --   | Association
+' o--  | Aggregation
+' *--  | Composition
+' <|-- | Generalization / inheritance
+' <|.. | Realization/Implementation
+' <..  | Dependency
+' <--  | Transition
+
 SocketObserver <|-- ErrorLogger
 
 Socket <|-- TCPSocket
@@ -101,5 +116,7 @@ SocketManager o--> SocketObserver
 
 SocketException -- UDPSocket: <<use>>
 SocketException -- TCPSocket: <<use>>
+
+Socket -- CanFrame
 
 @enduml

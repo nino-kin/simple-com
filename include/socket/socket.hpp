@@ -1,5 +1,5 @@
-#ifndef SOCKET_HPP_
-#define SOCKET_HPP_
+#ifndef SOCKET_SOCKET_HPP_
+#define SOCKET_SOCKET_HPP_
 
 #include "can/can_frame.hpp"
 
@@ -47,4 +47,4 @@ class Socket {
         bool error_flag_ = false;
 };
 
-#endif /* SOCKET_HPP_ */
+#endif /* SOCKET_SOCKET_HPP_ */

@@ -54,3 +54,11 @@
     - サンプルプログラムまたはテスト用のエントリーポイント
 
 これらのファイルとモジュールは、ソケット通信とログ機能を統合したC++ライブラリを実装するための基本的な要素です。各ファイルには詳細なコメントとドキュメンテーションを含め、使いやすく、他の開発者が理解しやすいように注意してください。ライブラリを実際に使う場合には、SocketクラスとLoggerクラスを組み合わせて、ソケット通信時にログを記録できるようになります。
+
+## CMake
+
+Activate debug
+
+```console
+$ cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build && cd build && ctest -VV -O $TEST_LOG_FILENAME
+```

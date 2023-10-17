@@ -1,5 +1,5 @@
-#ifndef SOCKET_DECORATOR_HPP_
-#define SOCKET_DECORATOR_HPP_
+#ifndef SOCKET_SOCKET_DECORATOR_HPP_
+#define SOCKET_SOCKET_DECORATOR_HPP_
 
 #include "socket.hpp"
 
@@ -21,4 +21,4 @@ class SocketDecorator : public Socket {
         }
 };
 
-#endif /* SOCKET_DECORATOR_HPP_ */
+#endif /* SOCKET_SOCKET_DECORATOR_HPP_ */
