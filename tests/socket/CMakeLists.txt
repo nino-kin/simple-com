@@ -14,7 +14,9 @@ set(TARGET_NAME test_socket)
 add_executable(
   ${TARGET_NAME}
   test_socket.cpp
-  ${CMAKE_SOURCE_DIR}/source/archive/socket_archive.cpp
+  ${CMAKE_SOURCE_DIR}/source/socket/socket.cpp
+  ${CMAKE_SOURCE_DIR}/source/socket/udp_socket.cpp
+  ${CMAKE_SOURCE_DIR}/source/socket/tcp_socket.cpp
 )
 
 # --------------------------------------------------------------
