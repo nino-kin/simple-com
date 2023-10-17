@@ -1,5 +1,5 @@
-#ifndef TCP_SOCKET_HPP_
-#define TCP_SOCKET_HPP_
+#ifndef SOCKET_TCP_SOCKET_HPP_
+#define SOCKET_TCP_SOCKET_HPP_
 
 #include "socket.hpp"
 
@@ -33,7 +33,6 @@ public:
     /// @param dest_ip Destination IP address
     /// @param dest_port Destination port
     /// @return Execution result
-    // bool send(const CanFrame& frame);
     // TODO:  Destination IP address and  Destination port are not used.
     bool send(const CanFrame& frame, const std::string& dest_ip, uint16_t dest_port) override;
 
@@ -42,7 +41,6 @@ public:
     /// @param dest_ip Source IP address
     /// @param dest_port Source port
     /// @return Execution result
-    // bool receive(CanFrame& frame);
     // TODO:  Source IP address and  Source port are not used.
     bool receive(CanFrame& frame, std::string& source_ip, uint16_t& source_port) override;
 
@@ -50,4 +48,4 @@ public:
     void close();
 };
 
-#endif /* TCP_SOCKET_HPP_ */
+#endif /* SOCKET_TCP_SOCKET_HPP_ */

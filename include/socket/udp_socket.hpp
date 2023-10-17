@@ -1,5 +1,5 @@
-#ifndef UDP_SOCKET_HPP_
-#define UDP_SOCKET_HPP_
+#ifndef SOCKET_UDP_SOCKET_HPP_
+#define SOCKET_UDP_SOCKET_HPP_
 
 #include "socket.hpp"
 
@@ -34,4 +34,4 @@ class UDPSocket : public Socket {
         void close();
 };
 
-#endif /* UDP_SOCKET_HPP_ */
+#endif /* SOCKET_UDP_SOCKET_HPP_ */

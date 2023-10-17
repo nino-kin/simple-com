@@ -1,17 +1,16 @@
-#ifndef ERROR_LOGGER_HPP_
-#define ERROR_LOGGER_HPP_
+#ifndef SOCKET_ERROR_LOGGER_HPP_
+#define SOCKET_ERROR_LOGGER_HPP_
 
 #include "socket_observer.hpp"
-
-#include "spdlog/spdlog.h"
+#include <iostream>
 
 class ErrorLogger : public SocketObserver {
 public:
     void update(Socket* socket) override {
         if (socket->hasError()) {
-            spdlog::error("Error occurred!");
+            std::cout << "Error occurred!" << std::endl;
         }
     }
 };
 
-#endif /* ERROR_LOGGER_HPP_ */
+#endif /* SOCKET_ERROR_LOGGER_HPP_ */

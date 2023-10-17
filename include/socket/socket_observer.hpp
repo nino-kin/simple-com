@@ -1,5 +1,5 @@
-#ifndef SOCKET_OBSERVER_HPP_
-#define SOCKET_OBSERVER_HPP_
+#ifndef SOCKET_SOCKET_OBSERVER_HPP_
+#define SOCKET_SOCKET_OBSERVER_HPP_
 
 #include "socket.hpp"
 
@@ -9,4 +9,4 @@ public:
     virtual void update(Socket* socket) = 0;
 };
 
-#endif /* SOCKET_OBSERVER_HPP_ */
+#endif /* SOCKET_SOCKET_OBSERVER_HPP_ */
