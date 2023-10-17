@@ -1,5 +1,5 @@
-#ifndef SOCKET_MANAGER_HPP_
-#define SOCKET_MANAGER_HPP_
+#ifndef SOCKET_SOCKET_MANAGER_HPP_
+#define SOCKET_SOCKET_MANAGER_HPP_
 
 #include "socket.hpp"
 #include "socket_factory.hpp"
@@ -50,4 +50,4 @@ private:
     }
 };
 
-#endif /* SOCKET_MANAGER_HPP_ */
+#endif /* SOCKET_SOCKET_MANAGER_HPP_ */

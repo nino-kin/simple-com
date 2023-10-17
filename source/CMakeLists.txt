@@ -8,6 +8,7 @@ cmake_minimum_required(VERSION 3.10)
 # --------------------------------------------------------------
 include_directories(socket)
 include_directories(data_processor)
+include_directories(include)
 # include_directories(archive)
 
 # --------------------------------------------------------------

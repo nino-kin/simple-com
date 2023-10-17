@@ -1,5 +1,5 @@
-#ifndef SOCKET_FACTORY_HPP_
-#define SOCKET_FACTORY_HPP_
+#ifndef SOCKET_SOCKET_FACTORY_HPP_
+#define SOCKET_SOCKET_FACTORY_HPP_
 
 #include "socket.hpp"
 #include "udp_socket.hpp"
@@ -25,4 +25,4 @@ class TCPSocketFactory : public SocketFactory {
         }
 };
 
-#endif /* SOCKET_FACTORY_HPP_ */
+#endif /* SOCKET_SOCKET_FACTORY_HPP_ */
