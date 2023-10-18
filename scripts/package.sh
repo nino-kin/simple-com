@@ -26,7 +26,7 @@ REPO_ROOT_DIR=$(cd "$SCRIPT_DIR/.." && pwd)
 if [ $# -ne 2 ]; then
     echo "INFO: Set up the default package name..."
     project_name=$REPO_NAME
-    tag=$(git describe --tags --abbrev=0)
+    tag=$(git describe --tags --abbrev=0) > /dev/null 2>&1
 fi
 package_name="$project_name-$tag.$EXTENSION"
 echo "INFO: package name : $package_name"
@@ -42,5 +42,10 @@ cp $REPO_ROOT_DIR/build/source/*/*.a $REPO_ROOT_DIR/$PACKAGE_DIR/lib
 # Copy configuration files
 cp pkg/* $REPO_ROOT_DIR/$PACKAGE_DIR/
 
+# Create a temporary copy of the package directory
+tmp_dir=$(mktemp -d)
+cp -r $PACKAGE_DIR/* $tmp_dir
+
 # Create release packages
-tar -czvf $PACKAGE_DIR/"$package_name" -C $PACKAGE_DIR .
+tar -czvf $PACKAGE_DIR/"$package_name" -C $tmp_dir .
+rm -r $tmp_dir
