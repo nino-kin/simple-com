@@ -64,12 +64,12 @@ clean: ## Clean all artifacts
 	@sudo rm -rf $(BUILD_DIR)
 	@[ -z "$$(find . -maxdepth 1 -type d -name 'site')" ] || sudo chmod -R 777 site/ && rm -rf site/
 	@[ -z "$$(find . -maxdepth 1 -type d -name 'out')" ] || sudo chmod -R 777 out/ && rm -rf out/
-	@[ -z "$$(find . -maxdepth 1 -type d -name 'dist')" ] || sudo chmod -R 777 package/ && rm -rf dist/
+	@[ -z "$$(find . -maxdepth 1 -type d -name 'dist')" ] || sudo chmod -R 777 dist/ && rm -rf dist/
 
 package: ## Create release packages
 	@echo -e "\nINFO: Creating relase packages..."
 	@echo "================================================================================"
-	@[ -z "$$(find . -maxdepth 1 -type d -name 'dist')" ] || sudo chmod -R 777 package/ && rm -rf dist/
+	@[ -z "$$(find . -maxdepth 1 -type d -name 'dist')" ] || sudo chmod -R 777 dist/ && rm -rf dist/
 	@$(ROOT_DIR)/$(SCRIPT_DIR)/docker.sh package
 	@echo "================================================================================"
 
