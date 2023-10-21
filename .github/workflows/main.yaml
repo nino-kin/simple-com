@@ -16,19 +16,19 @@ jobs:
         shell: bash
         run: |
           mkdir -p ${{ github.workspace }}/build
-          ./scripts/docker.sh setup
+          ${{ github.workspace }}/scripts/docker.sh setup
 
       - name: Build
         shell: bash
         run: |
-          ./scripts/docker.sh build
+          ${{ github.workspace }}/scripts/docker.sh build
 
       - name: Test
         shell: bash
         run: |
-          ./scripts/docker.sh test
+          ${{ github.workspace }}/scripts/docker.sh test
 
       - name: Cleanup
         shell: bash
         run: |
-          ./scripts/docker.sh rmi
+          ${{ github.workspace }}/scripts/docker.sh rmi
