@@ -42,6 +42,7 @@ int main() {
         // Prepare data to send
         CanFrame requestFrame = {
             .id_ = 123,  // Any ID
+            .name = "client",
             .rtr_ = 0,   // Dominant
             .dlc_ = 8,   // Length of data to send (8 bytes)
             .data_ = {1, 2, 3, 4, 5, 6, 7, 8} // Data to send
