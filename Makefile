@@ -1,4 +1,4 @@
-.PHONY: setup build test run exec kill clean mkdocs-build mkdocs-serve
+.PHONY: setup build test run exec kill clean package mkdocs-build mkdocs-serve
 .DEFAULT_GOAL := help
 
 SHELL := /bin/bash
@@ -64,12 +64,13 @@ clean: ## Clean all artifacts
 	@sudo rm -rf $(BUILD_DIR)
 	@[ -z "$$(find . -maxdepth 1 -type d -name 'site')" ] || sudo chmod -R 777 site/ && rm -rf site/
 	@[ -z "$$(find . -maxdepth 1 -type d -name 'out')" ] || sudo chmod -R 777 out/ && rm -rf out/
-	@[ -z "$$(find . -maxdepth 1 -type d -name 'package')" ] || sudo chmod -R 777 package/ && rm -rf package/
+	@[ -z "$$(find . -maxdepth 1 -type d -name 'dist')" ] || sudo chmod -R 777 package/ && rm -rf dist/
 
 package: ## Create release packages
 	@echo -e "\nINFO: Creating relase packages..."
 	@echo "================================================================================"
-	@$(ROOT_DIR)/$(SCRIPT_DIR)/package.sh simple-com 1.0.0
+	@[ -z "$$(find . -maxdepth 1 -type d -name 'dist')" ] || sudo chmod -R 777 package/ && rm -rf dist/
+	@$(ROOT_DIR)/$(SCRIPT_DIR)/docker.sh package
 	@echo "================================================================================"
 
 #---------------------------------------#
