@@ -16,8 +16,27 @@ REPO_ROOT_DIR=$(cd "$SCRIPT_DIR/.." && pwd)
 package_name=$(jq -r .package[0].name $JSON_FILEPATH)
 extension=$(jq -r .package[0].file_extension $JSON_FILEPATH)
 
+case "$extension" in
+    "tar")
+        option='-cvf'
+        ;;
+    "tar.gz")
+        option='-zcvf'
+        ;;
+    "tar.bz2")
+        option='-jcvf'
+        ;;
+    "tar.xz")
+        option='-Jcvf'
+        ;;
+    *)
+        echo "Unsupported extension type: $extension"
+        exit 1
+        ;;
+esac
+
 # Setup the package name
-package="$package_name$extension"
+package="$package_name.$extension"
 echo "INFO: package name : $package"
 
 mkdir -p "$REPO_ROOT_DIR/$DIST_DIR/lib"
@@ -36,5 +55,5 @@ tmp_dir=$(mktemp -d)
 cp -r $REPO_ROOT_DIR/$DIST_DIR/* $tmp_dir
 
 # Create release packages
-tar -czvf $REPO_ROOT_DIR/$DIST_DIR/"$package" -C $tmp_dir .
+tar $option $REPO_ROOT_DIR/$DIST_DIR/$package -C $tmp_dir .
 rm -r $tmp_dir
