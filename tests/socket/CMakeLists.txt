@@ -13,6 +13,7 @@ set(TARGET_NAME test_socket)
 # --------------------------------------------------------------
 add_executable(
   ${TARGET_NAME}
+  test_error_logger.cpp
   test_socket.cpp
   ${CMAKE_SOURCE_DIR}/source/socket/socket.cpp
   ${CMAKE_SOURCE_DIR}/source/socket/udp_socket.cpp

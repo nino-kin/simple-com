@@ -29,7 +29,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # --------------------------------------------------------------
 include(CTest)
 include_directories(include)
-include_directories(source/archive)
 include_directories(source/socket)
 
 # --------------------------------------------------------------
