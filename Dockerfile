@@ -9,7 +9,8 @@ RUN apt-get update && apt-get -y install \
     cmake \
     libcurl4-openssl-dev \
     libpthread-stubs0-dev \
-    python3.8 python3-pip python3-venv
+    python3.8 python3-pip python3-venv \
+    jq
 
 # You can be overridden by the command "--build-arg WORK_DIR=$YOUR_WORKDIR".
 ARG WORK_DIR=/app
