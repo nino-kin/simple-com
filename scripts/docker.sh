@@ -1,23 +1,17 @@
 #!/bin/bash
 # vim: et ts=2 sts=2 sw=2
-###########################################################################
-#
-# @(#) docker.sh
-#
-# Usage:
-#   docker.sh [param]
-#       (Optional)param: Docker option (e.g. setup, build, run, exec, etc.)
-#
-# Description:
-#   Docker helper.
-#
-###########################################################################
+###################################################################
+# Script Name  : docker.sh
+# Description  : Docker helper.
+# Args         :
+#     param: Docker option (e.g. setup, build, run, exec, etc.)
+###################################################################
 set -eu
 
 REPO_NAME=$(basename -s .git "$(git config --get remote.origin.url)")
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 REPO_ROOT_DIR=$(cd "$SCRIPT_DIR/.." && pwd)
-readonly DOCKER_WORK_DIR="/app"
+readonly DOCKER_WORK_DIR=$REPO_ROOT_DIR
 readonly TEST_LOG_FILENAME='google_test.log'
 
 # Docker configuration
@@ -43,6 +37,8 @@ setup() {
   fi
 
   docker build \
+  --build-arg HOST_UID=$(id -u) --build-arg HOST_GID=$(id -g) \
+  --build-arg WORK_DIR=$DOCKER_WORK_DIR \
   -t "$DOCKER_TAG" \
   -f "$REPO_ROOT_DIR"/Dockerfile .
 }
@@ -77,7 +73,7 @@ test() {
   --name $DOCKER_CONTAINER \
   $DOCKER_MOUNT_OPTION \
   $DOCKER_TAG \
-  bash -c "cmake -S . -B build && cmake --build build && cd build && ctest -VV -O $TEST_LOG_FILENAME"
+  bash -c "cmake -S . -B build && cmake --build build && cd build && ctest --output-on-failure -O $TEST_LOG_FILENAME"
 }
 
 kill() {
@@ -86,6 +82,14 @@ kill() {
 
 remove-image() {
   docker rmi $DOCKER_TAG
+}
+
+package() {
+  docker run --rm -t \
+  --name $DOCKER_CONTAINER \
+  $DOCKER_MOUNT_OPTION \
+  $DOCKER_TAG \
+  bash -c "./scripts/package.sh"
 }
 
 if [ $# == 0 ]; then
@@ -120,6 +124,9 @@ echo "${1}"
   --remove-image | -remove-image | remove-image | --rmi | -rmi | rmi)
     remove-image
   ;;
+  --package | -package | package)
+    package
+  ;;
   *)
     echo "USAGE: $0 [command]"
     echo " Commands:"
@@ -127,6 +134,7 @@ echo "${1}"
     echo "  build     - Perform the build"
     echo "  enter     - Enter the docker container"
     echo "  rmi       - Remove the docker image"
+    echo "  package   - Create packages"
     echo ""
     echo "  all       - Perform all the above steps"
   ;;
