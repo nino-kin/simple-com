@@ -1,0 +1,11 @@
+{
+    "name": "simple-com",
+    "description": "Simple communication library",
+    "version": "0.0.1",
+    "package": [
+        {
+            "name": "simple-com",
+            "file_extension": "tar.xz"
+        }
+    ]
+}

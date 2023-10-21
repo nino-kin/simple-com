@@ -1,61 +1,79 @@
-#include "gtest/gtest.h"
-#include "socket/error_logger.hpp"
+#include "can/can_frame.hpp"
 #include "socket/socket.hpp"
 #include "socket/socket_factory.hpp"
 #include "socket/socket_manager.hpp"
 
-// TEST(ErrorLoggerTest, UpdateWithError) {
-//     ErrorLogger logger;
-//     CanFrame frame;
-//     std::string dest_ip("");
-//     uint16_t dest_port(0);
+#include <gtest/gtest.h>
+#include <thread>
 
-//     UDPSocketFactory udpFactory;
-//     SocketManager& manager = SocketManager::getInstance();
-//     manager.setSocketFactory(&udpFactory);
-//     manager.addObserver(&logger);
-//     Socket* socket = manager.getSocket();
+class SocketTest : public ::testing::Test {
+    protected:
+        SocketTest() {
+            // Create a UDP socket factory
+            UDPSocketFactory udpFactory;
 
-//     if (!socket->bind(dest_port)) {
-//         std::cout << "Failed to bind server socket" << std::endl;
-//     }
+            // Create a socket manager and set the factory
+            SocketManager& manager = SocketManager::getInstance();
+            manager.setSocketFactory(&udpFactory);
 
-//     socket->send(frame, dest_ip, dest_port);
-//     std::cout << "dest_ip:" << dest_ip << std::endl;
-//     std::cout << "dest_port: " << dest_port << std::endl;
+            // Create a server socket
+            socket = manager.getSocket();
+        }
 
-//     testing::internal::CaptureStdout();
+        Socket* socket;
+};
 
-//     logger.update(socket);
+TEST_F(SocketTest, Creation) {
+    EXPECT_GE(socket->getSocketFD(), 0);
+}
 
-//     std::string output = testing::internal::GetCapturedStdout(); // キャプチャした標準出力を取得
-//     std::cout << "socket->hasError(): " << socket->hasError() << std::endl;
-//     ASSERT_EQ(output, "Error occurred!\n"); // 正しい出力がされたか確認
+TEST_F(SocketTest, Binding) {
+    ASSERT_TRUE(socket->bind(5555));
+}
 
-//     delete socket;
-// }
+TEST_F(SocketTest, SendingAndReceiving) {
+    CanFrame frameToSend = {
+        .id_ = 123,
+        .rtr_ = 0,
+        .dlc_ = 8,
+        .data_ = {1, 2, 3, 4, 5, 6, 7, 8}
+    };
 
-TEST(ErrorLoggerTest, UpdateWithoutError) {
-    uint16_t dest_port(12345);
+    std::string destIP = "127.0.0.1";
+    uint16_t destPort = 5555;
 
-    ErrorLogger logger;
-
+    // Create a server socket
+    // Create a UDP socket factory
     UDPSocketFactory udpFactory;
+
+    // Create a socket manager and set the factory
     SocketManager& manager = SocketManager::getInstance();
     manager.setSocketFactory(&udpFactory);
-    manager.addObserver(&logger);
-    Socket* socket = manager.getSocket();
 
-    if (!socket->bind(dest_port)) {
-        std::cout << "Failed to bind server socket" << std::endl;
-    }
+    // Create a server socket
+    Socket* serverSocket = manager.getSocket();
 
-    // No error occurs
+    serverSocket->bind(destPort);
 
-    testing::internal::CaptureStdout();
-    logger.update(socket);
-    std::string output = testing::internal::GetCapturedStdout();
-    ASSERT_EQ(output, "");
+    // Create a new thread to receive data as a server socket
+    std::thread receiveThread([&serverSocket, &frameToSend, &destIP, &destPort]() {
+        CanFrame receivedFrame;
+        std::string sourceIP;
+        uint16_t sourcePort;
 
-    delete socket;
+        serverSocket->receive(receivedFrame, sourceIP, sourcePort);
+
+        ASSERT_EQ(frameToSend.id_, receivedFrame.id_);
+        ASSERT_EQ(frameToSend.rtr_, receivedFrame.rtr_);
+        ASSERT_EQ(frameToSend.dlc_, receivedFrame.dlc_);
+        for (int i = 0; i < DLC_MAX_SIZE; ++i) {
+            ASSERT_EQ(frameToSend.data_[i], receivedFrame.data_[i]);
+        }
+    });
+
+    // Send data
+    socket->send(frameToSend, destIP, destPort);
+
+    // Wait for receiving standby thread to terminate
+    receiveThread.join();
 }

@@ -6,9 +6,11 @@
 
 ## Self study
 
-[【C++】UDP通信を実装する（Windows/Linux環境）](https://shizenkarasuzon.hatenablog.com/entry/2020/06/25/150229)
+- [UDP Server-Client implementation in C++](https://www.geeksforgeeks.org/udp-server-client-implementation-c/)
 
-[socket connect() vs bind()](https://stackoverflow.com/questions/27014955/socket-connect-vs-bind)
+- [【C++】UDP通信を実装する（Windows/Linux環境）](https://shizenkarasuzon.hatenablog.com/entry/2020/06/25/150229)
+
+- [socket connect() vs bind()](https://stackoverflow.com/questions/27014955/socket-connect-vs-bind)
 
 ## File structure
 

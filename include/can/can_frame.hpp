@@ -11,7 +11,6 @@ struct CanFrame {
     using Id = std::uint32_t;
 
     Id id_;
-    std::string name;
     uint32_t rtr_;
     uint8_t dlc_;
     uint8_t data_[DLC_MAX_SIZE];
