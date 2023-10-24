@@ -8,3 +8,4 @@ cmake_minimum_required(VERSION 3.10)
 # --------------------------------------------------------------
 add_subdirectory(one_way_udp)
 add_subdirectory(two_way_udp)
+add_subdirectory(two_way_tcp)
