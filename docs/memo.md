@@ -7,10 +7,13 @@
 ## Self study
 
 - [UDP Server-Client implementation in C++](https://www.geeksforgeeks.org/udp-server-client-implementation-c/)
+- [TCP Server-Client implementation in C](https://www.geeksforgeeks.org/tcp-server-client-implementation-in-c/)
 
 - [【C++】UDP通信を実装する（Windows/Linux環境）](https://shizenkarasuzon.hatenablog.com/entry/2020/06/25/150229)
 
 - [socket connect() vs bind()](https://stackoverflow.com/questions/27014955/socket-connect-vs-bind)
+
+- [Python で Socket 通信 (TCP/UDP サーバ](https://qiita.com/tick-taku/items/813710328d802829fb4b)
 
 ## File structure
 
