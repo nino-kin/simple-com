@@ -7,13 +7,16 @@
 
 import socket
 
+PORT = 60001
+
 # Create a socket object for the host
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Send a request to the server
 # 127.0.0.1: Specify the server's IP address
 # 60001: Specify the port on which the server is listening
-s.connect(('127.0.0.1', 60001))
+host = socket.gethostname()
+s.connect((socket.gethostbyname(host), PORT))
 
 # Receive data from the server
 data = s.recv(4096)

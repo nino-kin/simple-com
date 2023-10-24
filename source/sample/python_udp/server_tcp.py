@@ -7,6 +7,8 @@
 
 import socket
 
+PORT = 60001
+
 # Create a socket object
 # AF_INET: Address family, specifying IPv4
 # SOCK_STREAM: Specify the TCP protocol
@@ -15,7 +17,8 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # Bind the IP address and port number to the created socket object
 # 127.0.0.1: Specify the local host
 # 60001: Specify port number 60001 (listening port)
-s.bind(('127.0.0.1', 60001))
+host = socket.gethostname()
+s.bind((socket.gethostbyname(host), PORT))
 
 # Put the socket in listening mode
 # 1: Specify the number of requests that can be processed in parallel as 1
