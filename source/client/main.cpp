@@ -14,7 +14,7 @@
  * @brief The main function that runs the client.
  *
  * This function initializes a UDP socket, sends data to the server
- * and receives a reply back from the client.
+ * and receives a reply back from the server.
  *
  * @return The exit status of the program.
  */
